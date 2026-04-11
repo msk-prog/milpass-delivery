@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【全国初】宅配の常識を変える。子育て世代の「ミルパス」</title>
+  <meta name="description" content="月額2,980円で人気商品が1本100円〜。ご家族の毎日の健康を支えるお得な定額制の宅配サービス「ミルパス」。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <!-- Google広告タグ挿入箇所 -->
+  <!-- GA4タグ挿入箇所 -->
+  <style>
+    /* CSS変数定義 */
+    :root {
+      --main-color: #00A040;
+      --sub-color: #E8F5EC;
+      --accent-color: #E8002D;
+      --text-color: #333333;
+      --bg-color: #F8F9FA;
+      --white: #FFFFFF;
+      --border-color: #DDDDDD;
+      --yellow: #FFFBE6;
+      --wrapper-max-width: 480px;
+    }
+
+    /* リセットと基本スタイル */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ユーティリティ・コンテナ */
+    .wrapper {
+      max-width: var(--wrapper-max-width);
+      margin: 0 auto;
+      background-color: var(--white);
+      position: relative;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      overflow-x: hidden;
+      padding-bottom: 80px;
+      /* 固定バー用の余白 */
+    }
+
+    .section {
+      padding: 3rem 1.5rem;
+    }
+
+    .section-bg-sub {
+      background-color: var(--sub-color);
+      padding: 3rem 1.5rem;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 2rem;
+      line-height: 1.4;
+      color: var(--main-color);
+    }
+
+    /* プレースホルダー用スタイル */
+    .img-placeholder {
+      background: var(--sub-color);
+      border: 2px dashed var(--main-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--main-color);
+      font-weight: bold;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    /* アニメーション */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 160, 64, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(0, 160, 64, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 160, 64, 0);
+      }
+    }
+
+    /* CTAボタン共通 */
+    .btn-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--main-color);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      padding: 1rem;
+      width: 100%;
+      height: 56px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      animation: pulse 2s infinite;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-cta:hover {
+      opacity: 0.9;
+    }
+
+    /* 0. 上部非固定バー */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .top-bar .logo-container {
+      width: 180px;
+      /* PC用表示サイズ */
+      display: flex;
+      align-items: center;
+    }
+
+    .top-bar .logo-img {
+      width: 100%;
+      height: auto;
+      mix-blend-mode: multiply;
+      /* 白浮きを防ぎ背景に馴染ませる */
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .top-bar .logo-container {
+        width: 140px;
+        /* スマホ用表示サイズ */
+      }
+    }
+
+    .top-bar .badge {
+      font-size: 0.85rem;
+      font-weight: bold;
+      background-color: var(--text-color);
+      color: var(--white);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+    }
+
+    /* 1. 下部固定バー */
+    .fixed-bottom-bar {
+      position: fixed;
+      bottom: -100px;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(5px);
+      border-top: 1px solid var(--border-color);
+      padding: 0.5rem 1rem 1rem 1rem;
+      z-index: 100;
+      transition: bottom 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .fixed-bottom-bar.show {
+      bottom: 0;
+    }
+
+    .fixed-bottom-bar .small-text {
+      font-size: 0.8rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-bottom: 0.3rem;
+    }
+
+    /* wrapperの中央に配置するため調整 */
+    @media (min-width: 481px) {
+      .fixed-bottom-bar {
+        width: 480px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    /* 2. ヒーローエリア */
+    .hero {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      background: linear-gradient(to bottom, #FFFFFF 0%, #E8F5EC 100%);
+    }
+
+    .hero h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .hero-price-box {
+      background: var(--white);
+      border: 2px solid var(--main-color);
+      border-radius: 8px;
+      padding: 1.5rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-price-box p {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .hero-price-box .price-large {
+      font-size: 1.8rem;
+      color: var(--accent-color);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+
+    .sim-link {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--main-color);
+      text-decoration: underline;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+    }
+
+    .area-info {
+      padding: 1.5rem;
+      background: var(--white);
+      border-bottom: 4px solid var(--sub-color);
+    }
+
+    .area-badge {
+      display: inline-block;
+      background: #FFF0F0;
+      color: var(--accent-color);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .area-list {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      background: #F9F9F9;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    /* 3. 共感パート / 4. 解決策 (吹き出しスタイル) */
+    .fukidashi-box {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .fukidashi {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1rem;
+      position: relative;
+      font-weight: bold;
+      border: 2px solid var(--border-color);
+      margin-bottom: 10px;
+    }
+
+    .fukidashi::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: var(--border-color) transparent transparent;
+      z-index: 1;
+    }
+
+    .fukidashi::before {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      left: 20px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: var(--white) transparent transparent;
+      z-index: 2;
+    }
+
+    .fukidashi-img {
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* 4. 未来セクション（新規追加） */
+    .future-section {
+      padding: 3rem 1.5rem;
+      background: var(--bg-color);
+      border-top: 4px solid;
+      border-image: linear-gradient(to right, #2ea76a, #56c88a) 1;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .future-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 2.5rem;
+      line-height: 1.5;
+    }
+
+    .future-title .highlight-green {
+      color: #1d9e75;
+    }
+
+    .future-card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .future-card {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid #2ea76a;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+      opacity: 0;
+      overflow: hidden;
+    }
+
+    .future-card:hover {
+      border-color: #56c88a;
+      box-shadow: 0 3px 14px rgba(46, 167, 106, 0.13);
+    }
+
+    .future-photo {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      background-color: var(--sub-color);
+    }
+
+    .future-photo-0 {
+      background-image: url('商品群.png');
+      background-color: #d4ede2;
+    }
+
+    .future-photo-1 {
+      background-image: url('玄関先のBOX.jpg');
+    }
+
+    .future-photo-2 {
+      background-image: url('images/milpas-card2.jpg');
+    }
+
+    .future-photo-3 {
+      background-image: url('images/milpas-card3.jpg');
+    }
+
+    .future-content {
+      padding: 1.25rem;
+    }
+
+    .future-tag {
+      display: inline-block;
+      background: #E8F5EC;
+      color: #2ea76a;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-bottom: 0.5rem;
+    }
+
+    .future-quote {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .future-desc {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .future-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #2ea76a;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      padding: 1rem;
+      width: 100%;
+      height: 56px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+    }
+
+    .future-cta:hover {
+      background-color: #0f6e56;
+      color: var(--white);
+    }
+
+    /* アニメーション */
+    .future-section.is-visible .future-card {
+      animation: slideUpFade 0.6s ease-out forwards;
+    }
+
+    .future-section.is-visible .future-card:nth-child(1) {
+      animation-delay: 0ms;
+    }
+
+    .future-section.is-visible .future-card:nth-child(2) {
+      animation-delay: 200ms;
+    }
+
+    .future-section.is-visible .future-card:nth-child(3) {
+      animation-delay: 400ms;
+    }
+
+    .future-section.is-visible .future-card:nth-child(4) {
+      animation-delay: 600ms;
+    }
+
+    .future-section.is-visible .future-cta {
+      animation: slideUpFade 0.6s ease-out forwards;
+      animation-delay: 800ms;
+    }
+
+    @keyframes slideUpFade {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 5. 選ばれる4つの理由 */
+    .reason-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      border-top: 4px solid var(--main-color);
+    }
+
+    .reason-card h3 {
+      font-size: 1.2rem;
+      color: var(--main-color);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .reason-card p {
+      font-size: 0.95rem;
+    }
+
+    /* 6. シミュレーター */
+    .simulator-container {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      margin-top: 1rem;
+    }
+
+    .sim-slider-area {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .sim-slider-area input[type=range] {
+      width: 100%;
+      accent-color: var(--main-color);
+    }
+
+    .sim-count {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--main-color);
+      line-height: 1;
+    }
+
+    .sim-chart {
+      display: flex;
+      align-items: flex-end;
+      height: 160px;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 1rem;
+      padding: 0 10px;
+      gap: 15px;
+    }
+
+    .bar-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+    }
+
+    .bar {
+      width: 60px;
+      border-radius: 4px 4px 0 0;
+      transition: height 0.3s ease;
+      position: relative;
+    }
+
+    .bar-super {
+      background-color: #BDBDBD;
+      height: 10%;
+    }
+
+    .bar-milpass {
+      background-color: var(--main-color);
+      height: 10%;
+    }
+
+    .bar-val {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8rem;
+      font-weight: bold;
+      width: 100px;
+      text-align: center;
+    }
+
+    .bar-label {
+      margin-top: 8px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .sim-message {
+      background: var(--yellow);
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* 7. 商品ラインアップ */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-name {
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      min-height: 2.5em;
+    }
+
+    .product-tag {
+      background: var(--yellow);
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      color: #D48800;
+      font-weight: bold;
+    }
+
+    .product-comment {
+      font-size: 0.75rem;
+      font-style: italic;
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .product-price del {
+      font-size: 0.75rem;
+      color: #999;
+      margin-left: 4px;
+      font-weight: normal;
+    }
+
+    /* モーダル */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-content {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 440px;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .modal-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--main-color);
+      margin-bottom: 1rem;
+    }
+
+    .modal-point {
+      background: var(--sub-color);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .modal-point h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-color);
+    }
+
+    .modal-point p {
+      font-size: 0.85rem;
+    }
+
+    .modal-data {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* 8. 申込の流れ */
+    .step-box {
+      background: var(--white);
+      border: 2px solid var(--main-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .step-box::after {
+      content: '▼';
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--main-color);
+      font-size: 1.5rem;
+    }
+
+    .step-box:last-child::after {
+      display: none;
+    }
+
+    .step-num {
+      background: var(--main-color);
+      color: var(--white);
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 0.95rem;
+    }
+
+    /* 9. お客様の声 */
+    .voice-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .voice-meta {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .voice-title {
+      font-size: 1.1rem;
+      color: var(--main-color);
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .voice-text {
+      font-size: 0.95rem;
+      background: var(--sub-color);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    /* 10. FAQ */
+    .faq-item {
+      margin-bottom: 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      padding: 1rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      color: var(--main-color);
+    }
+
+    .faq-a {
+      padding: 0 1rem;
+      max-height: 0;
+      opacity: 0;
+      transition: all 0.3s ease;
+      background: var(--sub-color);
+      font-size: 0.95rem;
+    }
+
+    .faq-item.active .faq-a {
+      padding: 1rem;
+      max-height: 300px;
+      opacity: 1;
+    }
+
+    /* 11. クロージング */
+    .closing {
+      background: var(--main-color);
+      color: var(--white);
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .closing h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .closing p {
+      margin-bottom: 1.5rem;
+    }
+
+    .closing .highlight {
+      color: var(--accent-color);
+      background: var(--yellow);
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .closing .btn-cta {
+      background: var(--white);
+      color: var(--main-color);
+      margin-bottom: 1rem;
+      height: 60px;
+    }
+
+    .closing .notes {
+      font-size: 0.75rem;
+      color: #E8F5EC;
+    }
+
+    /* 12. フッター */
+    .footer {
+      background: var(--text-color);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+
+    .footer a {
+      color: #CCC;
+      text-decoration: underline;
+      display: block;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- 0. 上部非固定バー -->
+    <div class="top-bar">
+      <div class="logo-container">
+        <img src="ミルパスロゴ .png" alt="ミルパス" class="logo-img">
+      </div>
+      <div class="badge">広島市・東広島市・安芸郡（一部除く）</div>
+    </div>
+
+    <!-- 2. ヒーローエリア -->
+    <section class="hero fade-in">
+      <h1>【全国初】宅配の常識を変える。<br>子育て世代の「ミルパス」</h1>
+
+      <div class="hero-price-box">
+        <p>月額 <span class="price-large">2,980円</span> ＋ 1本 <span class="price-large">100円</span></p>
+        <p>家族何人でも定額。R-1も飲み放題気分！</p>
+      </div>
+      <p class="hero-note">※一部、130円・200円等の割引商品もございます</p>
+
+      <a href="#apply" class="btn-cta">🎁 無料サンプル7種類セットを申し込む ＞</a>
+      <a href="#simulator" class="sim-link">▼ まずは計算！家族まとめ割シミュレーション ＞</a>
+
+      <img src="ヒーロー画像.png" alt="ミルパス ヒーロー画像" class="hero-image">
+    </section>
+
+    <!-- エリア表示 -->
+    <section class="area-info fade-in">
+      <div class="area-badge">👑 広島エリア ○○世帯が利用中！<br>[ 明治の品質 × おかもとの真心 ]</div>
+      <div class="area-list">
+        <strong>お届けエリア：</strong><br>
+        ・広島市（南区・東区・安芸区）<br>
+        ・安芸郡（府中町・海田町）<br>
+        ・東広島市（八本松・西条・高屋）
+      </div>
+    </section>
+
+    <!-- 3. 共感パート（漫画セクション） -->
+    <section style="padding: 40px 16px; background: #fff;">
+      <div style="max-width: 480px; margin: 0 auto;
+                  display: flex; flex-direction: column; gap: 32px;">
+
+        <div style="border-radius: 12px; overflow: hidden;
+                    box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+          <img src="manga1.jpg" alt="漫画1"
+               style="width: 100%; display: block;">
+        </div>
+
+        <div style="border-radius: 12px; overflow: hidden;
+                    box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+          <img src="manga2.jpg" alt="漫画2"
+               style="width: 100%; display: block;">
+        </div>
+
+        <div style="border-radius: 12px; overflow: hidden;
+                    box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+          <img src="manga3.jpg" alt="漫画3"
+               style="width: 100%; display: block;">
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. 未来セクション -->
+    <section class="future-section fade-in">
+      <h2 class="future-title">
+        ミルパスなら、<span class="highlight-green">家族の笑顔が増える</span><br>未来があります。
+      </h2>
+      <div class="future-card-container">
+        <!-- カード0 (新規) -->
+        <div class="future-card">
+          <div class="future-photo future-photo-0"></div>
+          <div class="future-content">
+            <span class="future-tag">スーパーにはない品質</span>
+            <h3 class="future-quote">「明治だから届けられる、<br>特別仕様のおいしさ。」</h3>
+            <p class="future-desc">市販品とは異なる宅配専用設計。R-1・LG21など全商品が、鮮度を保ったままご自宅に届きます。</p>
+          </div>
+        </div>
+        <!-- カード1 -->
+        <div class="future-card">
+          <div class="future-photo future-photo-1"></div>
+          <div class="future-content">
+            <span class="future-tag">玄関お届け</span>
+            <h3 class="future-quote">「毎週玄関に届くから、重い荷物ゼロ！」</h3>
+            <p class="future-desc">重たい牛乳を買い物カゴへ入れる手間なし。毎週、新鮮なままお届けします。</p>
+          </div>
+        </div>
+        <!-- カード2 -->
+        <div class="future-card">
+          <div class="future-photo future-photo-2"></div>
+          <div class="future-content">
+            <span class="future-tag">LINEで簡単管理</span>
+            <h3 class="future-quote">「LINEひとつで変更・スキップOK」</h3>
+            <p class="future-desc">旅行や急な予定変更も、LINEからすぐ対応。わずらわしい電話不要です。</p>
+          </div>
+        </div>
+        <!-- カード3 -->
+        <div class="future-card">
+          <div class="future-photo future-photo-3"></div>
+          <div class="future-content">
+            <span class="future-tag">家族みんなで</span>
+            <h3 class="future-quote">「家族全員、1本100円でR-1が飲める」</h3>
+            <p class="future-desc">機能性ヨーグルトをお得な宅配価格で。毎日続けやすいから、家族の健康習慣に。</p>
+          </div>
+        </div>
+      </div>
+      <a href="#apply" class="future-cta">無料でお試しする</a>
+    </section>
+
+
+    <!-- 6. 料金シミュレーター -->
+    <section id="simulator" class="section fade-in">
+      <h2 class="title">ミルパス料金シミュレーター<br><span style="font-size:1rem;color:#666;">実際に計算してみよう！週に何本飲みますか？</span></h2>
+
+      <div class="simulator-container">
+        <div class="sim-slider-area">
+          <input type="range" id="week-count" min="4" max="35" value="14">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <img src="R-1.png" alt="R-1" style="width: 38px; height: auto;">
+            <p style="margin: 0;">週 <span class="sim-count" id="current-count">14</span> 本</p>
+          </div>
+        </div>
+
+        <div class="sim-message" id="sim-msg">
+          <!-- JSで動的に変更 -->
+        </div>
+
+        <div class="sim-chart">
+          <div class="bar-group">
+            <div class="bar bar-super" id="bar-super">
+              <span class="bar-val" id="val-super">0円</span>
+            </div>
+            <div class="bar-label">スーパー購入</div>
+          </div>
+          <div class="bar-group">
+            <div class="bar bar-milpass" id="bar-milpass">
+              <span class="bar-val" id="val-milpass" style="color:var(--main-color);">0円</span>
+            </div>
+            <div class="bar-label">ミルパス</div>
+          </div>
+        </div>
+
+        <p style="text-align:center;font-size:0.85rem;color:#666;margin-bottom:0.5rem;">実質単価: <strong id="val-unit"
+            style="color:var(--accent-color);">0</strong>円 / 本</p>
+        <p style="text-align:center;font-size:0.75rem;color:#999;margin-bottom:1.5rem;font-weight:bold;">
+          ※月額の目安：基本料2,980円 ＋ (週<span id="f-week">14</span>本 × 100円 × 4週間) ＝ <span id="f-total">8,580</span>円
+        </p>
+
+        <a href="#apply" class="btn-cta">🎁 無料サンプルを申し込む ▶</a>
+      </div>
+    </section>
+
+    <!-- 7. 商品ラインアップ -->
+    <section class="section section-bg-sub fade-in">
+      <h2 class="title">宅配で選ばれている<br>「厳選人気TOP7」<br><span style="font-size:0.9rem;color:#666;">⤵ 詳しく見たい商品をポチッと押してね
+          ⤵</span></h2>
+
+      <div class="product-grid" id="product-grid">
+        <!-- JSで動的に生成 -->
+      </div>
+    </section>
+
+    <!-- 8. 申込の流れ -->
+    <section class="section fade-in">
+      <h2 class="title">まずは「お試し」から。<br>無理なく始める3ステップ</h2>
+
+      <div class="step-box">
+        <div class="step-num">STEP 1</div>
+        <div class="step-title">LINEからカンタンお申し込み</div>
+        <div class="step-desc">LINEで宅配可能エリアと、ご希望のお届け日時を選ぶだけ！</div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">STEP 2</div>
+        <div class="step-title">「お試し7本セット」のお届け＆ご案内</div>
+        <div class="step-desc">
+          ご希望の日時に、スタッフが無料サンプルとカタログをお持ちします。<br>商品は全て「宅配専用」の特別仕様です。商品特徴や保冷箱の使い方、配達曜日などをご説明し、今の生活リズムに合わせた最適なプランをご提案します。<br>まずは数日〜1週間、ご家族みんなで味や飲みやすさをたっぷりチェック！
+        </div>
+      </div>
+      <div class="step-box">
+        <div class="step-num">STEP 3</div>
+        <div class="step-title">空き瓶回収 ＆ ご感想</div>
+        <div class="step-desc">後日、空き瓶の回収に伺います。<br>「味が合わなかった」「今回は見送りたい」という場合でも、無理な勧誘は一切いたしませんのでご安心ください。お気軽にご感想をお聞かせください。
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. お客様の声 -->
+    <section class="section section-bg-sub fade-in">
+      <h2 class="title">ご利用者の声</h2>
+
+      <div class="voice-card">
+        <p class="voice-meta">東広島市八本松在住・30代女性・共働き</p>
+        <h3 class="voice-title">LINEで変更できて「溜まる」心配なし！</h3>
+        <p class="voice-text">
+          「毎週届くと溜まってしまうんじゃ…という心配がありましたが、LINE一本で『来週はお休み』『今週は本数を減らす』が簡単にできるのが良いですね。旅行や帰省の時もムダにならず、気負わずに続けられています。」</p>
+      </div>
+
+      <div class="voice-card">
+        <p class="voice-meta">安芸郡海田町在住・40代女性・4人家族</p>
+        <h3 class="voice-title">家族みんなで！毎朝冷蔵庫にあるから「飲み忘れゼロ」</h3>
+        <p class="voice-text">「毎朝必ず人数分が冷蔵庫にあるので、飲み忘れがゼロに。全員、季節の変わり目に体調を崩すことが減り、『家族の健康を買っている』と思えば安いものだと実感しています。」</p>
+      </div>
+
+      <div class="voice-card">
+        <p class="voice-meta">安佐北区在住50代女性 ※ご利用者は広島市在住70代ご夫婦</p>
+        <h3 class="voice-title">実家の両親へ。配達が「見守り」にも</h3>
+        <p class="voice-text">「配達員さんが毎週顔を出して声をかけてくれるのが、両親にとっては楽しみなようです。ちょっとした見守り代わりにもなっていて、離れている私としても安心感があります。」</p>
+      </div>
+    </section>
+
+    <!-- 10. よくある質問 -->
+    <section class="section fade-in">
+      <h2 class="title">よくある質問</h2>
+
+      <div class="faq-container" id="faq-container">
+        <!-- JSで動的に生成 -->
+      </div>
+    </section>
+
+    <!-- 無料サンプル画像挿入 -->
+    <div style="margin: 2rem 0; width: 100%;">
+      <img src="無料サンプル7本セット .png" alt="無料サンプル7本セット" style="width: 100%; display: block; height: auto;">
+    </div>
+
+    <!-- 11. クロージング -->
+    <section id="apply" class="closing fade-in">
+      <h2>【広島市・東広島市エリア限定オファー】</h2>
+      <p>「お試しサンプル7本セット」を無料でお届けします</p>
+      <div class="highlight">通常1,250円相当が完全無料！</div>
+
+      <a href="PROLINE_URL" class="btn-cta">🎁 LINEで無料サンプルを予約する ▶</a>
+
+      <p class="notes">※広島市・東広島市エリア限定 ／ ※1世帯1回限り ／ ※しつこい勧誘は一切ありません</p>
+    </section>
+
+    <!-- 12. フッター -->
+    <footer class="footer">
+      <p>ミルパス（明治の宅配サービス）</p>
+      <a href="#">プライバシーポリシー</a>
+      <p>&copy; 2026 Meiji Co., Ltd.</p>
+    </footer>
+
+    <!-- 1. 下部固定バー -->
+    <div class="fixed-bottom-bar" id="bottom-bar">
+      <p class="small-text">＼ 60秒で完了・しつこい勧誘なし ／</p>
+      <a href="#apply" class="btn-cta" style="height:48px;font-size:1rem;">🎁 LINEで無料サンプル7種類セットを申し込む ＞</a>
+    </div>
+
+  </div> <!-- /wrapper -->
+
+  <!-- 商品詳細モーダル -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
+      <span class="modal-close" id="modal-close">&times;</span>
+      
+      <img id="m-img" src="" alt="商品画像" style="width: 80px; height: auto; display: block; margin: 0 auto 12px; background: #fff;">
+      <h3 class="modal-title" id="m-title" style="white-space: pre-wrap; font-size: 1.1rem; line-height: 1.4;"></h3>
+
+      <div class="modal-point">
+        <h4 id="m-p1-title"></h4>
+        <p id="m-p1-desc" style="white-space: pre-wrap; font-size: 0.85rem;"></p>
+      </div>
+      <div class="modal-point">
+        <h4 id="m-p2-title"></h4>
+        <p id="m-p2-desc" style="white-space: pre-wrap; font-size: 0.85rem;"></p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h4 id="m-sizzle-title" style="font-size: 0.95rem; font-weight: bold; color: var(--main-color); margin-bottom: 0.5rem;"></h4>
+        <p id="m-sizzle-desc" style="font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap;"></p>
+      </div>
+
+      <div style="background: var(--bg-color); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+        <h4 id="m-data-title" style="font-size: 0.85rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--text-color);"></h4>
+        <div id="m-data-desc" style="font-size: 0.8rem; color: #666; white-space: pre-wrap; max-height: 150px; overflow-y: auto;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Intersection Observer for fade-in animations
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+
+    // Bottom Fixed Bar Show/Hide
+    window.addEventListener('scroll', () => {
+      const bottomBar = document.getElementById('bottom-bar');
+      if (window.scrollY > 600) {
+        bottomBar.classList.add('show');
+      } else {
+        bottomBar.classList.remove('show');
+      }
+    });
+
+    // Simulator Logic
+    const simInput = document.getElementById('week-count');
+    const simCount = document.getElementById('current-count');
+    const simMsg = document.getElementById('sim-msg');
+    const barSuper = document.getElementById('bar-super');
+    const barMilpass = document.getElementById('bar-milpass');
+    const valSuper = document.getElementById('val-super');
+    const valMilpass = document.getElementById('val-milpass');
+    const valUnit = document.getElementById('val-unit');
+
+    function updateSimulator() {
+      const weekCount = parseInt(simInput.value);
+      simCount.innerText = weekCount;
+
+      const monthCount = weekCount * 4;
+      const milpassMonth = 2980 + (monthCount * 100);
+      const superMonth = monthCount * 145;
+      const normalMonth = monthCount * 175;
+
+      const realUnit = Math.round(milpassMonth / monthCount);
+
+      valSuper.innerText = superMonth.toLocaleString() + '円';
+      valMilpass.innerText = milpassMonth.toLocaleString() + '円';
+      valUnit.innerText = realUnit;
+
+      const fTotal = 2980 + (weekCount * 100 * 4);
+      document.getElementById('f-week').innerText = weekCount;
+      document.getElementById('f-total').innerText = fTotal.toLocaleString();
+
+      // グラフの高さを計算 (MAXを superMonth(35本時=20300円) 近辺に設定 )
+      const maxVal = 22000;
+      const superHeight = Math.max(15, (superMonth / maxVal) * 100);
+      const milpassHeight = Math.max(15, (milpassMonth / maxVal) * 100);
+
+      barSuper.style.height = superHeight + '%';
+      barMilpass.style.height = milpassHeight + '%';
+
+      // メッセージの出し分け
+      let msg = '';
+      if (weekCount >= 4 && weekCount <= 6) {
+        msg = "この本数なら『通常宅配（175円）』が最安！月額費ゼロで、まずは便利さを体験しませんか？";
+      } else if (weekCount >= 7 && weekCount <= 8) {
+        msg = "まだ早いです！今は『通常宅配』が賢い選択。スーパーへ行く時間と手間を節約しましょう。";
+      } else if (weekCount === 9) {
+        msg = "あと1本！『週10本』からミルパスが逆転します。ご家族の分も合わせて、いかがですか？";
+      } else if (weekCount === 10) {
+        msg = "【逆転】ここからミルパスがお得！通常宅配（175円）より安く、便利な生活が始まります。";
+      } else if (weekCount >= 11 && weekCount <= 12) {
+        msg = "👑 お得！定価以下になりました！コンビニで買うより断然安く、高機能なR-1が届きます。";
+      } else if (weekCount >= 13 && weekCount <= 14) {
+        msg = "👑 お得！スーパー価格（145円）まであと少し。『運ぶ手間賃がタダ』と考えれば、最高のコスパです。";
+      } else if (weekCount === 15) {
+        msg = "👑 お得！特売日のスーパー並み！実質140円台で、重い荷物が『玄関に届く魔法』を体験してください。";
+      } else if (weekCount === 16) {
+        msg = "スーパーより安い！💪 ついにスーパー価格以下！1本145円を切りました。迷わず『ミルパス一択』です。";
+      } else if (weekCount >= 17 && weekCount <= 19) {
+        msg = "スーパーより安い！💪 お店より安いのに、重い荷物運びもゼロ。『安くて・便利』な最強プランの完成です。";
+      } else if (weekCount >= 20 && weekCount <= 27) {
+        msg = "スーパーより安い！💪 ご家族みんなで健康習慣。これだけ頼んでもお財布に優しい！浮いたお金で外食も楽しめます。";
+      } else if (weekCount >= 28 && weekCount <= 35) {
+        msg = "スーパーより安い！💪 驚異の120円台！家族全員で毎日飲んでも、スーパーより圧倒的に安くなります。";
+      }
+      simMsg.innerHTML = msg;
+    }
+
+    simInput.addEventListener('input', updateSimulator);
+    updateSimulator(); // init
+
+    // Product Lineup Data
+    const products = [
+      {
+        name: "明治プロビオヨーグルトR-1",
+        tag: "家族の体調管理・受験に",
+        comment: "毎朝の「強さ」スイッチON！",
+        price: "100", normalPrice: "175",
+        imgSrc: "R-1.png",
+        dTitle: "明治プロビオヨーグルトR-1\n〜家族を守る、毎日の「強さ」習慣〜",
+        dp1Title: "💡 集団生活で頑張る「子供のお守り」",
+        dp1Desc: "学校や園で、たくさんの友達と触れ合うお子様に。\n「R-1乳酸菌EPS」が、内側から強さを引き出し、\n元気な毎日をサポートします。",
+        dp2Title: "✨ 忙しい朝も「出すだけ」習慣",
+        dp2Desc: "調理不要で、冷蔵庫から出すだけ。\n「行ってきます」の前の数秒で、\n家族の体調管理が完了します。\n忙しい共働きのご家庭にこそ選ばれている理由です。",
+        sizzleTitle: "毎朝の「スイッチ」になる、爽やかな飲み心地",
+        sizzleDesc: "お子様でもゴクゴク飲める、酸味を抑えたまろやかなコク。\n朝起きたての乾いた喉にスッと通り、\n身体の防御スイッチが「カチッ」と入るような感覚です。\n「おいしいから明日も飲みたい！」と、\n家族みんなの楽しみになります。",
+        dataTitle: "毎日続けるものだから、確かな品質を。",
+        dData: "＜ドリンクタイプ（1本あたり）＞\nエネルギー：66kcal　たんぱく質：3.0g\nカルシウム：106mg　EPS（推定値）：3.3mg\n\n＜食べるタイプ（1個あたり）＞\nエネルギー：81kcal　たんぱく質：3.5g\nカルシウム：123mg　EPS（推定値）：3.3mg\n\n※成分は100ml/100gあたりの推定値です。"
+      },
+      {
+        name: "明治ミルクで元気PREMIUM",
+        tag: "子供の成長・栄養不足",
+        comment: "1本で1日分の栄養底上げ！",
+        price: "100", normalPrice: "170",
+        imgSrc: "ミルクで元気.png",
+        dTitle: "明治ミルクで元気PREMIUM（宅配専用）\n〜1本で1日分のカルシウムと鉄分！成長期と忙しい毎日に〜",
+        dp1Title: "💡 育ち盛りの「身体づくり」に",
+        dp1Desc: "牛乳コップ約3杯分のカルシウムと鉄分、\nさらにビタミン・葉酸までこの1本に凝縮。\nたくさんの量が飲めないお子様でも、\n効率よく栄養をチャージできます。",
+        dp2Title: "✨ 忙しい朝の「栄養保険」",
+        dp2Desc: "「パンだけ」「おにぎりだけ」になりがちな朝も、\nこれをプラスすれば栄養バランスが整います。\n共働きで忙しい親御さんの、心強い味方です。",
+        sizzleTitle: "お子様もゴクゴク飲める、やさしい甘さ",
+        sizzleDesc: "ミルク本来のコクがありながら、後味はスッキリ。\n「牛乳は苦手だけど、これは大好き」という\nお子様も多い、毎日飽きない美味しさです。",
+        dataTitle: "小さな1本に、驚くほどの栄養を。",
+        dData: "＜1本（100ml）あたり＞\nエネルギー：59kcal　たんぱく質：3.7g\nカルシウム：680mg　鉄：6.8mg\n\n※ビタミンB群・D・E・葉酸など配合\n※成分は推定値です。"
+      },
+      {
+        name: "明治プロビオヨーグルトLG21",
+        tag: "胃の負担・ストレス",
+        comment: "食後の「胃」をリセット！",
+        price: "100", normalPrice: "170",
+        imgSrc: "LG21.png",
+        dTitle: "明治プロビオヨーグルトLG21\n〜胃の負担を感じる、現代人の食生活に〜",
+        dp1Title: "● 胃で働く「LG21乳酸菌」",
+        dp1Desc: "一時的な対処ではなく、毎日の習慣で胃の健康をサポート。\n「食後が重い」「キリキリする」と感じる、\n現代人の強い味方です。",
+        dp2Title: "● 不規則な生活の「リセット習慣」",
+        dp2Desc: "外食や遅い夕食、ストレス過多な日々に。\n負担のかかった身体を、これ1本で整える\n「自分への優しさ」を取り入れませんか。",
+        sizzleTitle: "胃に届く「癒やし」の口どけ",
+        sizzleDesc: "食べた瞬間、絹のような滑らかさが食道から胃へと\nゆっくり落ちていき、荒れた気分を優しく\n撫でてくれるような感覚。\n脂っこい食事の後でも、このサッパリとした甘さが\n口の中を洗い流し、重たい気分を「スッ」と\n軽くしてくれます。",
+        dataTitle: "胃の負担を考えた、優しい設計。",
+        dData: "＜ドリンクタイプ（1本あたり）＞\nエネルギー：66kcal　たんぱく質：2.9g\nカルシウム：106mg\n\n＜食べるタイプ（1個あたり）＞\nエネルギー：68kcal　たんぱく質：2.9g\nカルシウム：102mg\n\n※関与成分：LG21乳酸菌（Lactobacillus gasseri OLL2716株）\n※成分は100ml/100gあたりの推定値です。"
+      },
+      {
+        name: "明治コレステさらり",
+        tag: "コレステロール対策",
+        comment: "青リンゴ味で「サラサラ」へ",
+        price: "130", normalPrice: "200",
+        imgSrc: "コレステ.png",
+        dTitle: "明治コレステさらり\n〜健康診断の数値が気になりだしたら〜",
+        dp1Title: "💡 飲むだけの「LDLコレステロール対策」",
+        dp1Desc: "悪玉（LDL）コレステロールを下げる機能が\n報告されている「HMPA」を配合。\n食事制限や運動はハードルが高い…という方でも、\n毎日の習慣を変えることなく対策できます。",
+        dp2Title: "✨ 罪悪感ゼロの「脂肪・砂糖ゼロ」",
+        dp2Desc: "甘いものは控えなきゃ…という方でも安心。\nカロリーを気にせず飲めるので、\nお風呂上がりやリラックスタイムの\n「ご褒美」としても最適です。",
+        sizzleTitle: "身体が透き通るような、青りんごの爽快感",
+        sizzleDesc: "キャップを開けた瞬間に広がる、\nもぎたての青りんごのようなフレッシュな香り。\nドロドロとした健康への不安を、透明感のある\n爽やかな酸味が「サラサラ」と流してくれるよう。\nスッキリとした飲み口で、気分までリフレッシュできます。",
+        dataTitle: "無理なく続ける、スマートな健康習慣。",
+        dData: "＜1本（100ml）あたり＞\nエネルギー：26kcal　たんぱく質：0g\n脂質：0g　食物繊維：4.3g\n\n※機能性関与成分：HMPA 23mg\n※成分は推定値です。"
+      },
+      {
+        name: "明治 目と睡眠Wサポート",
+        tag: "疲れ目・睡眠の質",
+        comment: "夜の1本で「翌朝」が変わる",
+        price: "100", normalPrice: "190",
+        imgSrc: "目と睡眠.png",
+        dTitle: "明治 目と睡眠Wサポート\n〜酷使した「目」と、毎日の「眠り」をWケア〜",
+        dp1Title: "💡 現代人のための「2大悩みケア」",
+        dp1Desc: "スマホやPC作業による「目のピント調節」と、\n深く眠るための「睡眠の質」。\n現代人が抱える2つの悩みを、\nこれ1本で同時にサポートします。",
+        dp2Title: "✨ 翌朝が変わる「夜の習慣」",
+        dp2Desc: "「寝ても疲れが取れない」「朝から身体が重い」という方に。\nお風呂上がりや寝る前に飲むだけで、\n翌朝の目覚めが変わる感覚をご提案します。",
+        sizzleTitle: "一日の終わりの「オフ」ボタン",
+        sizzleDesc: "張り詰めていた神経をほどいていくような、優しい甘さ。\n飲むことが、自分への「今日もお疲れ様」の合図になります。\n翌朝、カーテンを開けた時の光の眩しさが違う。\nパチっと目が開き、世界がクリアに見える\n「あの感覚」を取り戻しましょう。",
+        dataTitle: "確かなエビデンスに基づいた、機能性表示食品。",
+        dData: "＜1本（100ml）あたり＞\nエネルギー：35kcal　たんぱく質：0.9g　脂質：0g\n\n※機能性関与成分：クロセチン 7.5mg\n※その他：トリプトファン 100mg配合\n※成分は推定値です。"
+      },
+      {
+        name: "明治グルコサミン＆コラーゲン",
+        tag: "潤い・アクティブ",
+        comment: "私を満たす「飲む美容液」",
+        price: "100", normalPrice: "180",
+        imgSrc: "グルコラ.png",
+        dTitle: "明治グルコサミン1500＆コラーゲン3000\n〜忙しい毎日に、潤いと軽やかさをチャージ〜",
+        dp1Title: "● まるで「飲む全身美容液」",
+        dp1Desc: "コラーゲン3000mgに加え、ヒアルロン酸・セラミド・\nビタミンC・Eを贅沢に配合。\n高い美容ドリンクを買わなくても、\nこれ1本で毎日の「ハリ」と「潤い」を\n内側からケアできます。",
+        dp2Title: "● 仕事も家事も「スマート」に動く",
+        dp2Desc: "グルコサミンはシニアだけの成分ではありません。\n立ち仕事やデスクワーク、家事など、\n一日中動き回る女性の身体をスムーズにサポート。\n「夕方になっても身体が軽い」感覚を味方につけましょう。",
+        sizzleTitle: "脂肪ゼロで楽しむ、フルーティーなリフレッシュ",
+        sizzleDesc: "「美容ドリンクはクセがあって苦手…」という方こそ\n驚く、すっきりとしたフルーツ風味。\nしかも嬉しい「脂肪ゼロ」。\n仕事の合間やお風呂上がりに、カロリーを気にせず飲める、\n自分へのご褒美タイムです。",
+        dataTitle: "女性に嬉しい成分を、ぎゅっと1本に。",
+        dData: "＜1本（100ml）あたり＞\nエネルギー：55kcal　たんぱく質：4.8g　脂質：0g\n\n※コラーゲンペプチド 3000mg・グルコサミン 1500mg\n※ヒアルロン酸 5mg・セラミド・ビタミンC・E配合\n※成分は推定値です。"
+      },
+      {
+        name: "明治5つ星習慣",
+        tag: "血圧・血糖・脂肪",
+        comment: "あれこれ悩まず「これ1本」",
+        price: "100", normalPrice: "190",
+        imgSrc: "5つ星.png",
+        dTitle: "明治5つ星習慣\n〜血圧、血糖値、中性脂肪…まとめて対策〜",
+        dp1Title: "● 効率重視の「オールインワン」",
+        dp1Desc: "血圧、血糖値、中性脂肪。\nあれこれ気になり始めたけれど、\nサプリを何種類も飲むのは面倒…という方に。\nこれ1本で賢く、まとめて対策できます。",
+        dp2Title: "● 食事を心から楽しむ「お守り」",
+        dp2Desc: "食後の血糖値や中性脂肪の上昇を\n穏やかにする機能も。\n食事の前に飲むだけで「身体に良いことをした」\nという安心感が手に入り、\n罪悪感なく食事を楽しめます。",
+        sizzleTitle: "悩みを吹き飛ばす、爽やかなフルーツ風味",
+        sizzleDesc: "健康診断の数字という「重たい悩み」を、\nフルーティーな香りが軽やかに吹き飛ばします。\n機能性飲料特有のクセがなく、\nどんな食事にも合うクリアな味わい。\n毎日美味しく飲みながら、リスクケアも完了です。",
+        dataTitle: "日本初。5つの機能を1本に凝縮。",
+        dData: "＜1本（100ml）あたり＞\nエネルギー：41kcal　たんぱく質：0g\n脂質：0g　食物繊維：6.1g\n\n※機能性関与成分：難消化性デキストリン 5g・GABA 100mg\n※成分は推定値です。"
+      }
+    ];
+
+    const prodGrid = document.getElementById('product-grid');
+    const modal = document.getElementById('product-modal');
+    const modalClose = document.getElementById('modal-close');
+
+    products.forEach((p, idx) => {
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${p.imgSrc}" alt="${p.name}" class="product-img" style="object-fit:contain; margin-bottom:0.8rem; background:transparent; border:none; height:120px;">
+        <div class="product-tag">${p.tag}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-comment">"${p.comment}"</div>
+        <div class="product-price">${p.price}円 <del>${p.normalPrice}円</del></div>
+      `;
+      card.addEventListener('click', () => openModal(idx));
+      prodGrid.appendChild(card);
+    });
+
+    function openModal(idx) {
+      const p = products[idx];
+      document.getElementById('m-img').src = p.imgSrc;
+      document.getElementById('m-title').innerText = p.dTitle;
+      document.getElementById('m-p1-title').innerText = p.dp1Title;
+      document.getElementById('m-p1-desc').innerText = p.dp1Desc;
+      document.getElementById('m-p2-title').innerText = p.dp2Title;
+      document.getElementById('m-p2-desc').innerText = p.dp2Desc;
+      document.getElementById('m-sizzle-title').innerText = p.sizzleTitle;
+      document.getElementById('m-sizzle-desc').innerText = p.sizzleDesc;
+      document.getElementById('m-data-title').innerText = p.dataTitle;
+      document.getElementById('m-data-desc').innerText = p.dData;
+      modal.style.display = 'flex';
+    }
+
+    modalClose.addEventListener('click', () => { modal.style.display = 'none'; });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
+
+    // FAQ Data
+    const faqs = [
+      { q: "🤝 注文や手続きは面倒ですか？", a: "いいえ、すべてLINEひとつで完結します。変更・スキップ・解約もLINEから24時間OK。" },
+      { q: "🗺️ どのエリアに届けてくれますか？", a: "広島市（南区・東区・安芸区）、安芸郡（府中町・海田町）、東広島市（八本松・西条・高屋）。<br>一部対象外もありますのでLINEでご確認ください。" },
+      { q: "💰 月の途中から始めると、料金で損をしませんか？", a: "ご安心ください。初月や解約月は週割り計算いたします。<br>例：第2週目からスタートする場合→初月の会費は3週間分の2,235円。" },
+      { q: "📦 飲みきれなくなったり、続けられるか不安です…", a: "状況に合わせて柔軟に調整可能です。「今週はスキップ」「味を変えたい」など<br>配達スタッフやLINEへいつでもご連絡ください。" },
+      { q: "🏦 支払い方法は何がありますか？", a: "手数料無料の「口座振替（自動引き落とし）」。広島銀行・もみじ銀行・JAなど<br>ほぼ全ての金融機関に対応。お引落とし日は毎月15日。" },
+      { q: "🌡️ 留守中の受け取りや、真夏の温度管理は大丈夫ですか？", a: "専用の保冷箱と強力な蓄冷材で、夕方・夜のご帰宅まで冷えた状態を守ります。<br>いわば「玄関先の冷蔵庫」です。" },
+      { q: "🏢 オートロックのマンションでも利用できますか？", a: "はい、業者用の暗証番号発行や宅配ボックス対応など、マンションごとに柔軟に対応します。" },
+      { q: "♻️ 飲み終わった空きビンはどうすればいいですか？", a: "軽く水洗いして受箱に戻すだけ。次回お届け時にスタッフが回収・リユースします。" },
+      { q: "🆓 入会金や年会費、解約金はかかりますか？", a: "一切かかりません。必要なのは月額パス料金（2,980円）と商品代のみ。<br>2年縛りなどの制約もありません。" },
+      { q: "🎯 家族それぞれ、違う種類の商品を頼めますか？", a: "もちろんです！1本単位で自由に組み合わせ可能。<br>「パパはR-1、ママはコレステさらり」など自由にカスタマイズできます。" },
+      { q: "✈️ 旅行などで、来週だけ本数を減らすことはできますか？", a: "はい、週単位で本数や種類の変更が可能です。LINEで簡単に調整できます。" },
+      { q: "📊 月額2,980円の元を取るには、どのくらい飲めばいいですか？", a: "3人家族なら、1日合計3〜4本以上消費される場合スーパーより安くなります。<br>上のシミュレーターで具体的な節約額を試算できます。" }
+    ];
+
+    const faqContainer = document.getElementById('faq-container');
+    faqs.forEach((faq) => {
+      const item = document.createElement('div');
+      item.className = 'faq-item';
+      item.innerHTML = `
+        <div class="faq-q">${faq.q} <span>＋</span></div>
+        <div class="faq-a"><p>${faq.a}</p></div>
+      `;
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        item.classList.toggle('active');
+        const span = item.querySelector('.faq-q span');
+        span.innerText = item.classList.contains('active') ? '－' : '＋';
+      });
+      faqContainer.appendChild(item);
+    });
+  </script>
+</body>
+
+</html>
