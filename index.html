@@ -539,91 +539,377 @@
     }
 
     /* 6. シミュレーター */
-    .simulator-container {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      margin-top: 1rem;
+    /* 6. シミュレーター (V2) */
+    .sim-v2-wrapper {
+      padding: 16px 14px 24px;
+      font-family: 'Noto Sans JP', sans-serif;
+      max-width: 500px;
+      margin: 0 auto;
     }
-
-    .sim-slider-area {
-      margin: 1.5rem 0;
+    .sim-v2-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #1d9e75;
       text-align: center;
+      margin-bottom: 4px;
     }
-
-    .sim-slider-area input[type=range] {
-      width: 100%;
-      accent-color: var(--main-color);
+    .sim-v2-subtitle {
+      font-size: 12px;
+      color: #aaa;
+      text-align: center;
+      margin-bottom: 16px;
+      font-weight: normal;
     }
-
-    .sim-count {
-      font-size: 3rem;
-      font-weight: bold;
-      color: var(--main-color);
-      line-height: 1;
+    .sim-v2-box {
+      background: #fff;
+      border: 1px solid #e8f5ee;
+      border-radius: 14px;
+      padding: 14px 14px 12px;
+      margin-bottom: 10px;
     }
-
-    .sim-chart {
+    .sim-v2-header {
       display: flex;
-      align-items: flex-end;
-      height: 160px;
-      border-bottom: 2px solid var(--border-color);
-      margin-bottom: 1rem;
-      padding: 0 10px;
-      gap: 15px;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
     }
-
-    .bar-group {
-      flex: 1;
+    .sim-v2-header img {
+      width: 38px;
+      height: auto;
+    }
+    .sim-v2-header p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .sim-v2-count {
+      color: #1d9e75;
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .sim-v2-legend {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      font-size: 10px;
+      color: #666;
+      margin-bottom: 8px;
+    }
+    .sim-v2-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .sim-v2-legend-color {
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+    }
+    .sim-v2-chart {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      height: 130px;
+      position: relative;
+    }
+    .sim-v2-baseline {
+      height: 1px;
+      background: #e8f5ee;
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .sim-v2-bar-group {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      height: 100%;
+      width: 66px;
     }
-
-    .bar {
-      width: 60px;
+    .sim-v2-bar-val {
+      font-size: 11px;
+      white-space: nowrap;
+      margin-bottom: 2px;
+    }
+    .sim-v2-bar {
+      width: 66px;
       border-radius: 4px 4px 0 0;
-      transition: height 0.3s ease;
+      transition: height 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding-bottom: 4px;
       position: relative;
     }
-
-    .bar-super {
-      background-color: #BDBDBD;
-      height: 10%;
-    }
-
-    .bar-milpass {
-      background-color: var(--main-color);
-      height: 10%;
-    }
-
-    .bar-val {
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.8rem;
+    .sim-v2-bar-recommended {
+      background: #e0f2f1;
+      color: #1d9e75;
+      font-size: 8px;
       font-weight: bold;
-      width: 100px;
+      padding: 1px 4px;
+      border-radius: 2px;
+      margin-bottom: 2px;
+      position: absolute;
+      top: -18px;
+      white-space: nowrap;
+    }
+    .sim-v2-bar-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .sim-v2-unit-row {
+      display: flex;
+      justify-content: space-around;
+      font-size: 11px;
+      font-weight: 500;
+      color: #666;
+      margin-bottom: 12px;
       text-align: center;
     }
-
-    .bar-label {
-      margin-top: 8px;
-      font-size: 0.8rem;
+    .sim-v2-unit-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sim-v2-toggle-box {
+      background: #f8fffe;
+      border: 1px solid #c8eedd;
+      border-radius: 10px;
+      padding: 8px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .sim-v2-toggle-text-main {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f6e56;
+      margin-bottom: 2px;
+    }
+    .sim-v2-toggle-text-sub {
+      font-size: 10px;
+      color: #bbb;
+    }
+    .sim-v2-toggle-switch {
+      width: 42px;
+      height: 23px;
+      background: #ddd;
+      border-radius: 20px;
+      position: relative;
+      transition: background 0.3s ease;
+      flex-shrink: 0;
+    }
+    .sim-v2-toggle-knob {
+      width: 17px;
+      height: 17px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .sim-v2-toggle-switch.on {
+      background: #2ea76a;
+    }
+    .sim-v2-toggle-switch.on .sim-v2-toggle-knob {
+      transform: translateX(19px);
+    }
+    .sim-v2-badge {
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin: 2px 0 8px;
+    }
+    .sim-v2-badge-tag {
+      font-size: 9px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 4px;
       font-weight: bold;
     }
-
-    .sim-message {
-      background: var(--yellow);
-      padding: 1rem;
-      border-radius: 8px;
+    .sim-v2-badge-text {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.6;
+      color: #333;
+    }
+    .sim-v2-cards {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .sim-v2-card {
+      background: #f8fffe;
+      border: 1px solid #c8eedd;
+      border-radius: 10px;
+      padding: 7px 8px;
+      flex: 1;
+      text-align: center;
+    }
+    .sim-v2-card-label {
+      font-size: 9px;
+      color: #aaa;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+    .sim-v2-card-val {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .sim-v2-card-sub {
+      font-size: 8px;
+      color: #bbb;
+    }
+    .sim-v2-cta {
+      background: linear-gradient(135deg, #2ea76a, #1d9e75);
+      color: #fff;
+      border-radius: 50px;
+      width: 100%;
+      padding: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(46,167,106,.28);
+      border: none;
+      margin-bottom: 4px;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+    }
+    .sim-v2-cta-note {
+      font-size: 10px;
+      color: #bbb;
+      text-align: center;
+    }
+    .sim-v2-slider-card {
+      border-radius: 14px 14px 0 0;
+      padding: 12px 16px 10px;
+      background: #fff;
+      border: 1px solid #e8f5ee;
+      border-bottom: none;
+    }
+    .sim-v2-slider-card.closed {
+      border-radius: 14px;
+      border-bottom: 1px solid #e8f5ee;
+    }
+    .sim-v2-slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 8px;
+    }
+    .sim-v2-slider-label {
+      font-size: 12px;
+      color: #999;
+    }
+    .sim-v2-slider-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1d9e75;
+    }
+    .sim-v2-slider-val span {
+      font-size: 12px;
+      color: #666;
+      font-weight: normal;
+    }
+    .sim-v2-slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10px;
+      color: #999;
+      margin-top: 4px;
+    }
+    input[type=range].sim-v2-range {
+      width: 100%;
+      margin: 0;
+      accent-color: #2ea76a;
+    }
+    .sim-v2-accordion {
+      border-radius: 0 0 14px 14px;
+      border-top: 2px solid #2ea76a;
+      background: #fff;
+      border-left: 1px solid #e8f5ee;
+      border-right: 1px solid #e8f5ee;
+      border-bottom: 1px solid #e8f5ee;
+      overflow: hidden;
+    }
+    .sim-v2-acc-header {
+      background: linear-gradient(135deg, #f0faf5, #e8f5ee);
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f6e56;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .sim-v2-acc-body {
+      padding: 14px;
+      display: none;
+    }
+    .sim-v2-acc-body.open {
+      display: block;
+    }
+    .sim-v2-acc-section {
+      margin-bottom: 14px;
+    }
+    .sim-v2-acc-h4 {
+      font-size: 11px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 6px;
+      border-left: 3px solid #2ea76a;
+      padding-left: 6px;
+    }
+    .sim-v2-acc-list {
+      font-size: 10px;
+      color: #555;
+      line-height: 1.5;
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+    .sim-v2-acc-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+    }
+    .sim-v2-acc-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #2ea76a;
       font-weight: bold;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
+    }
+    .sim-v2-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .sim-v2-tag {
+      background: #e1f5ee;
+      color: #0f6e56;
+      font-size: 10px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+    .sim-v2-formula {
+      font-size: 9px;
+      color: #ccc;
+      text-align: center;
+      margin-top: 8px;
     }
 
     /* 7. 商品ラインアップ */
@@ -1025,43 +1311,129 @@
 
     <!-- 6. 料金シミュレーター -->
     <section id="simulator" class="section fade-in">
-      <h2 class="title">ミルパス料金シミュレーター<br><span style="font-size:1rem;color:#666;">実際に計算してみよう！週に何本飲みますか？</span></h2>
+      <div class="sim-v2-wrapper">
+        <h2 class="sim-v2-title">ミルパス 料金シミュレーター</h2>
+        <p class="sim-v2-subtitle">実際に計算してみよう！週に何本飲みますか？</p>
 
-      <div class="simulator-container">
-        <div class="sim-slider-area">
-          <input type="range" id="week-count" min="4" max="35" value="14">
-          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <img src="R-1.png" alt="R-1" style="width: 38px; height: auto;">
-            <p style="margin: 0;">週 <span class="sim-count" id="current-count">14</span> 本</p>
+        <div class="sim-v2-box">
+          <div class="sim-v2-header">
+            <img src="R-1.png" alt="R-1">
+            <p>週 <span class="sim-v2-count" id="v2-week-count">7</span> 本 <span style="font-weight:normal;font-size:12px;color:#888;">/ 月 約<span id="v2-month-count">28</span>本</span></p>
           </div>
-        </div>
 
-        <div class="sim-message" id="sim-msg">
-          <!-- JSで動的に変更 -->
-        </div>
+          <div class="sim-v2-legend">
+            <div class="sim-v2-legend-item"><div class="sim-v2-legend-color" style="background:#b4b2a9;"></div>スーパー</div>
+            <div class="sim-v2-legend-item"><div class="sim-v2-legend-color" id="legend-color-normal" style="background:#2ea76a;"></div>通常宅配</div>
+            <div class="sim-v2-legend-item"><div class="sim-v2-legend-color" id="legend-color-milpass" style="background:#c8e6d4;"></div>ミルパス</div>
+          </div>
 
-        <div class="sim-chart">
-          <div class="bar-group">
-            <div class="bar bar-super" id="bar-super">
-              <span class="bar-val" id="val-super">0円</span>
+          <div class="sim-v2-chart">
+            <div class="sim-v2-bar-group">
+              <div class="sim-v2-bar-val" id="val-super" style="color:#666;">--</div>
+              <div class="sim-v2-bar" id="bar-super" style="background:#b4b2a9; height:20px;">
+                <div class="sim-v2-bar-title">スーパー</div>
+              </div>
             </div>
-            <div class="bar-label">スーパー購入</div>
-          </div>
-          <div class="bar-group">
-            <div class="bar bar-milpass" id="bar-milpass">
-              <span class="bar-val" id="val-milpass" style="color:var(--main-color);">0円</span>
+            <div class="sim-v2-bar-group">
+              <div class="sim-v2-bar-val" id="val-normal" style="color:#aaa;">--</div>
+              <div class="sim-v2-bar" id="bar-normal" style="background:#2ea76a; height:20px;">
+                <div class="sim-v2-bar-recommended" id="rec-normal">★おすすめ</div>
+                <div class="sim-v2-bar-title">通常宅配</div>
+              </div>
             </div>
-            <div class="bar-label">ミルパス</div>
+            <div class="sim-v2-bar-group">
+              <div class="sim-v2-bar-val" id="val-milpass" style="color:#aaa;">--</div>
+              <div class="sim-v2-bar" id="bar-milpass" style="background:#c8e6d4; height:20px;">
+                <div class="sim-v2-bar-recommended" id="rec-milpass" style="display:none;">★おすすめ</div>
+                <div class="sim-v2-bar-title">ミルパス</div>
+              </div>
+            </div>
+          </div>
+          <div class="sim-v2-baseline"></div>
+
+          <div class="sim-v2-unit-row">
+            <div class="sim-v2-unit-item"><span id="u-super">150円/本</span></div>
+            <div class="sim-v2-unit-item"><span>175円/本</span></div>
+            <div class="sim-v2-unit-item"><span id="u-milpass">--</span></div>
+          </div>
+
+          <div class="sim-v2-toggle-box" onclick="toggleTime()">
+            <div>
+              <div class="sim-v2-toggle-text-main">買い物時間コストを含める</div>
+              <div class="sim-v2-toggle-text-sub">月4回×往復30分×1,000円/時間＝+2,000円／月</div>
+            </div>
+            <div class="sim-v2-toggle-switch" id="time-toggle">
+              <div class="sim-v2-toggle-knob"></div>
+            </div>
+          </div>
+
+          <div class="sim-v2-badge" id="msg-badge">
+            <div class="sim-v2-badge-tag" id="msg-tag">--</div>
+            <div class="sim-v2-badge-text" id="msg-text">--</div>
+          </div>
+
+          <div class="sim-v2-cards">
+            <div class="sim-v2-card">
+              <div class="sim-v2-card-label" id="card1-label">通常宅配 vs スーパー 月差額</div>
+              <div class="sim-v2-card-val" id="card1-val">--</div>
+            </div>
+            <div class="sim-v2-card">
+              <div class="sim-v2-card-label">年間にすると</div>
+              <div class="sim-v2-card-val" id="card2-val">--</div>
+              <div class="sim-v2-card-sub" id="card2-sub">※月差額×12ヶ月</div>
+            </div>
+          </div>
+
+          <a href="#apply" class="sim-v2-cta">まずは無料サンプル7種類を試してみる →</a>
+          <div class="sim-v2-cta-note">＼ 60秒で完了・しつこい勧誘なし ／</div>
+        </div>
+
+        <div class="sim-v2-slider-card" id="slider-card-wrap">
+          <div class="sim-v2-slider-header">
+            <div class="sim-v2-slider-label">週の本数を動かしてみる</div>
+            <div class="sim-v2-slider-val"><span id="slider-val-num">7</span><span>本 / 週</span></div>
+          </div>
+          <input type="range" id="week-count" class="sim-v2-range" min="4" max="35" step="1" value="7">
+          <div class="sim-v2-slider-labels">
+            <span>4本〜</span>
+            <span>35本</span>
           </div>
         </div>
 
-        <p style="text-align:center;font-size:0.85rem;color:#666;margin-bottom:0.5rem;">実質単価: <strong id="val-unit"
-            style="color:var(--accent-color);">0</strong>円 / 本</p>
-        <p style="text-align:center;font-size:0.75rem;color:#999;margin-bottom:1.5rem;font-weight:bold;">
-          ※月額の目安：基本料2,980円 ＋ (週<span id="f-week">14</span>本 × 100円 × 4週間) ＝ <span id="f-total">8,580</span>円
-        </p>
+        <div class="sim-v2-accordion" id="acc-panel">
+          <div class="sim-v2-acc-header" onclick="toggleAcc()" id="acc-header">
+            💡 この本数なら「通常宅配」がおすすめ — 詳しく見る <span id="acc-icon">▼</span>
+          </div>
+          <div class="sim-v2-acc-body" id="acc-body">
+            <div class="sim-v2-acc-section">
+              <div class="sim-v2-acc-h4">【便利さ・使いやすさ】</div>
+              <ul class="sim-v2-acc-list">
+                <li>月額の基本料はゼロ！飲んだ本数だけ払えばいい、シンプルな仕組みです</li>
+                <li>重い荷物を運ぶ必要はなし。毎朝、玄関の保冷ボックスに届いています</li>
+                <li>変更・スキップ・お休みもLINEでOK。電話は一切不要です</li>
+                <li>スーパーへの行き来がなくなって、その時間が丸ごと自分の時間に！</li>
+              </ul>
+            </div>
+            <div class="sim-v2-acc-section">
+              <div class="sim-v2-acc-h4">【スーパーでは買えない宅配専用の商品たち】</div>
+              <ul class="sim-v2-acc-list">
+                <li>宅配専用R-1は市販品とは別製法。特別仕様のR-1です！</li>
+                <li>1本でカルシウム・鉄分がたっぷり摂れる「ミルクで元気PREMIUM」も！</li>
+                <li>健康診断が気になる方向けの「コレステさらり」など機能性商品も揃ってます</li>
+              </ul>
+              <div class="sim-v2-tags">
+                <span class="sim-v2-tag">R-1（宅配専用）</span>
+                <span class="sim-v2-tag">ミルクで元気PREMIUM</span>
+                <span class="sim-v2-tag">LG21</span>
+                <span class="sim-v2-tag">コレステさらり</span>
+                <span class="sim-v2-tag">目と睡眠Wサポート</span>
+                <span class="sim-v2-tag">5つ星習慣</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <a href="#apply" class="btn-cta">🎁 無料サンプルを申し込む ▶</a>
+        <div class="sim-v2-formula" id="formula-text"></div>
       </div>
     </section>
 
@@ -1218,72 +1590,234 @@
     });
 
     // Simulator Logic
+    // Simulator V2 Logic
+    let timeToggleOn = false;
+    let accOpen = false;
+
     const simInput = document.getElementById('week-count');
-    const simCount = document.getElementById('current-count');
-    const simMsg = document.getElementById('sim-msg');
+    const v2WeekCount = document.getElementById('v2-week-count');
+    const v2MonthCount = document.getElementById('v2-month-count');
+    const sliderValNum = document.getElementById('slider-val-num');
+
     const barSuper = document.getElementById('bar-super');
+    const barNormal = document.getElementById('bar-normal');
     const barMilpass = document.getElementById('bar-milpass');
+
     const valSuper = document.getElementById('val-super');
+    const valNormal = document.getElementById('val-normal');
     const valMilpass = document.getElementById('val-milpass');
-    const valUnit = document.getElementById('val-unit');
 
-    function updateSimulator() {
-      const weekCount = parseInt(simInput.value);
-      simCount.innerText = weekCount;
+    const recNormal = document.getElementById('rec-normal');
+    const recMilpass = document.getElementById('rec-milpass');
+    
+    const uSuper = document.getElementById('u-super');
+    const uMilpass = document.getElementById('u-milpass');
 
-      const monthCount = weekCount * 4;
-      const milpassMonth = 2980 + (monthCount * 100);
-      const superMonth = monthCount * 145;
-      const normalMonth = monthCount * 175;
+    const legendNormal = document.getElementById('legend-color-normal');
+    const legendMilpass = document.getElementById('legend-color-milpass');
 
-      const realUnit = Math.round(milpassMonth / monthCount);
+    const msgBadge = document.getElementById('msg-badge');
+    const msgTag = document.getElementById('msg-tag');
+    const msgText = document.getElementById('msg-text');
 
-      valSuper.innerText = superMonth.toLocaleString() + '円';
-      valMilpass.innerText = milpassMonth.toLocaleString() + '円';
-      valUnit.innerText = realUnit;
+    const card1Label = document.getElementById('card1-label');
+    const card1Val = document.getElementById('card1-val');
+    const card2Val = document.getElementById('card2-val');
 
-      const fTotal = 2980 + (weekCount * 100 * 4);
-      document.getElementById('f-week').innerText = weekCount;
-      document.getElementById('f-total').innerText = fTotal.toLocaleString();
+    const accPanel = document.getElementById('acc-panel');
+    const sliderCardWrap = document.getElementById('slider-card-wrap');
+    const accBody = document.getElementById('acc-body');
+    const accIcon = document.getElementById('acc-icon');
+    const formulaText = document.getElementById('formula-text');
+    const timeToggle = document.getElementById('time-toggle');
 
-      // グラフの高さを計算 (MAXを superMonth(35本時=20300円) 近辺に設定 )
-      const maxVal = 22000;
-      const superHeight = Math.max(15, (superMonth / maxVal) * 100);
-      const milpassHeight = Math.max(15, (milpassMonth / maxVal) * 100);
-
-      barSuper.style.height = superHeight + '%';
-      barMilpass.style.height = milpassHeight + '%';
-
-      // メッセージの出し分け
-      let msg = '';
-      if (weekCount >= 4 && weekCount <= 6) {
-        msg = "この本数なら『通常宅配（175円）』が最安！月額費ゼロで、まずは便利さを体験しませんか？";
-      } else if (weekCount >= 7 && weekCount <= 8) {
-        msg = "まだ早いです！今は『通常宅配』が賢い選択。スーパーへ行く時間と手間を節約しましょう。";
-      } else if (weekCount === 9) {
-        msg = "あと1本！『週10本』からミルパスが逆転します。ご家族の分も合わせて、いかがですか？";
-      } else if (weekCount === 10) {
-        msg = "【逆転】ここからミルパスがお得！通常宅配（175円）より安く、便利な生活が始まります。";
-      } else if (weekCount >= 11 && weekCount <= 12) {
-        msg = "👑 お得！定価以下になりました！コンビニで買うより断然安く、高機能なR-1が届きます。";
-      } else if (weekCount >= 13 && weekCount <= 14) {
-        msg = "👑 お得！スーパー価格（145円）まであと少し。『運ぶ手間賃がタダ』と考えれば、最高のコスパです。";
-      } else if (weekCount === 15) {
-        msg = "👑 お得！特売日のスーパー並み！実質140円台で、重い荷物が『玄関に届く魔法』を体験してください。";
-      } else if (weekCount === 16) {
-        msg = "スーパーより安い！💪 ついにスーパー価格以下！1本145円を切りました。迷わず『ミルパス一択』です。";
-      } else if (weekCount >= 17 && weekCount <= 19) {
-        msg = "スーパーより安い！💪 お店より安いのに、重い荷物運びもゼロ。『安くて・便利』な最強プランの完成です。";
-      } else if (weekCount >= 20 && weekCount <= 27) {
-        msg = "スーパーより安い！💪 ご家族みんなで健康習慣。これだけ頼んでもお財布に優しい！浮いたお金で外食も楽しめます。";
-      } else if (weekCount >= 28 && weekCount <= 35) {
-        msg = "スーパーより安い！💪 驚異の120円台！家族全員で毎日飲んでも、スーパーより圧倒的に安くなります。";
+    function toggleTime() {
+      timeToggleOn = !timeToggleOn;
+      if (timeToggleOn) {
+        timeToggle.classList.add('on');
+      } else {
+        timeToggle.classList.remove('on');
       }
-      simMsg.innerHTML = msg;
+      updateSimulatorV2();
     }
 
-    simInput.addEventListener('input', updateSimulator);
-    updateSimulator(); // init
+    function toggleAcc() {
+      accOpen = !accOpen;
+      if (accOpen) {
+        accBody.classList.add('open');
+        accIcon.innerText = '▲';
+      } else {
+        accBody.classList.remove('open');
+        accIcon.innerText = '▼';
+      }
+    }
+
+    function updateSimulatorV2() {
+      const w = parseInt(simInput.value);
+      const m = w * 4;
+
+      v2WeekCount.innerText = w;
+      v2MonthCount.innerText = m;
+      sliderValNum.innerText = w;
+
+      // 計算
+      let superBase = m * 145; // 純粋スーパー
+      let superDisp = timeToggleOn ? superBase + 2000 : superBase; // 表示用スーパー
+
+      let normalDisp = m * 175;
+      let milpassDisp = 2980 + (m * 100);
+
+      // 実質単価
+      let superUnit = Math.round(superDisp / m);
+      let milpassUnit = Math.round(milpassDisp / m);
+
+      // 棒グラフ（固定スケール24500基準）
+      const MAX_VAL = 24500;
+      barSuper.style.height = Math.max(20, (superDisp / MAX_VAL) * 130) + 'px';
+      barNormal.style.height = Math.max(20, (normalDisp / MAX_VAL) * 130) + 'px';
+      barMilpass.style.height = Math.max(20, (milpassDisp / MAX_VAL) * 130) + 'px';
+
+      valSuper.innerText = superDisp.toLocaleString() + '円';
+      valNormal.innerText = normalDisp.toLocaleString() + '円';
+      valMilpass.innerText = milpassDisp.toLocaleString() + '円';
+
+      // 単価行
+      if (timeToggleOn) {
+        uSuper.innerHTML = `実質<span style="font-weight:700;">${superUnit}</span>円/本`;
+      } else {
+        uSuper.innerText = '150円/本'; // OFF時は150円指定
+      }
+
+      // ゾーン切替
+      let diff = 0;
+      if (w <= 9) {
+        // 通常宅配推奨
+        barNormal.style.backgroundColor = '#2ea76a';
+        barMilpass.style.backgroundColor = '#c8e6d4';
+        legendNormal.style.backgroundColor = '#2ea76a';
+        legendMilpass.style.backgroundColor = '#c8e6d4';
+        recNormal.style.display = 'block';
+        recMilpass.style.display = 'none';
+
+        valNormal.style.color = '#0f6e56';
+        valNormal.style.fontWeight = '700';
+        valMilpass.style.color = '#aaa';
+        valMilpass.style.fontWeight = 'normal';
+
+        uMilpass.innerHTML = `実質${milpassUnit}円/本`; 
+        uMilpass.style.color = '#666';
+        uMilpass.style.fontWeight = '500';
+
+        // 節約カード
+        card1Label.innerText = '通常宅配 vs スーパー 月差額';
+        diff = normalDisp - superDisp;
+      } else {
+        // ミルパス推奨
+        barNormal.style.backgroundColor = '#f0997b';
+        barMilpass.style.backgroundColor = '#2ea76a';
+        legendNormal.style.backgroundColor = '#f0997b';
+        legendMilpass.style.backgroundColor = '#2ea76a';
+        recNormal.style.display = 'none';
+        recMilpass.style.display = 'block';
+
+        valMilpass.style.color = '#0f6e56';
+        valMilpass.style.fontWeight = '700';
+        valNormal.style.color = '#aaa';
+        valNormal.style.fontWeight = 'normal';
+
+        uMilpass.innerHTML = `実質<span style="font-weight:700;">${milpassUnit}</span>円/本`;
+        uMilpass.style.color = '#0f6e56';
+        uMilpass.style.fontWeight = '700';
+
+        // 節約カード（時間コストなし純粋額で比較）
+        card1Label.innerText = 'ミルパス vs スーパー 月差額';
+        // 「スーパーは時間コストなしの純粋金額で比較」
+        diff = milpassDisp - superBase; 
+      }
+
+      // 節約カードの数値反映
+      if (diff > 0) {
+        card1Val.innerText = `+${diff.toLocaleString()}円`;
+        card1Val.style.color = '#c0392b';
+      } else {
+        let saveNum = Math.abs(diff);
+        card1Val.innerText = `-${saveNum.toLocaleString()}円`;
+        card1Val.style.color = '#0f6e56';
+      }
+      card2Val.innerText = (diff * 12).toLocaleString() + '円';
+      card2Val.style.color = card1Val.style.color;
+
+      // メッセージ判定
+      let tagColor = '', tagText = '', msg = '';
+      if (w >= 4 && w <= 6) {
+        tagColor = 'linear-gradient(135deg,#f0f6ff,#e6f1fb)'; // blue
+        tagText = '通常宅配ゾーン';
+        msg = 'この本数なら「通常宅配（175円）」がいちばんお得！<br>月額費はゼロなので、まずは気軽に宅配生活を<br>試してみてください♪';
+      } else if (w >= 7 && w <= 8) {
+        tagColor = 'linear-gradient(135deg,#f0f6ff,#e6f1fb)'; // blue
+        tagText = '通常宅配ゾーン';
+        msg = '今の本数なら「通常宅配」が賢い選択です。<br>スーパーへ行く手間がなくなるだけでも、<br>かなり楽になりますよ！';
+      } else if (w === 9) {
+        tagColor = 'linear-gradient(135deg,#fffbf0,#fef3d0)'; // amber
+        tagText = '通常宅配ゾーン';
+        msg = 'あと1本！週10本からミルパスが通常宅配より<br>安くなります。ご家族の分も一緒にいかがですか？';
+      } else if (w === 10) {
+        tagColor = 'linear-gradient(135deg,#f0faf5,#e1f5ee)'; // green
+        tagText = 'ミルパスゾーン';
+        msg = 'ここからミルパスが通常宅配より安くなります！<br>便利さはそのままに、さらにお得な生活のはじまりです。';
+      } else if (w >= 11 && w <= 12) {
+        tagColor = 'linear-gradient(135deg,#f0faf5,#e1f5ee)'; // green
+        tagText = 'ミルパスゾーン';
+        msg = '通常宅配より安くなりました！コンビニで買うより<br>ずっとお得に、高機能なR-1が玄関まで届きます。';
+      } else if (w >= 13 && w <= 14) {
+        tagColor = 'linear-gradient(135deg,#f0faf5,#e1f5ee)'; // green
+        tagText = 'ミルパスゾーン';
+        msg = 'どんどんお得に！「運ぶ手間賃がタダ」と考えると、<br>これ以上ないコスパですね。';
+      } else if (w === 15) {
+        tagColor = 'linear-gradient(135deg,#f0faf5,#e1f5ee)'; // green
+        tagText = 'ミルパスゾーン';
+        msg = 'スーパー価格（150円）まであと少し！特売日並みの<br>価格で、玄関まで届けてもらえます。';
+      } else if (w === 16) {
+        tagColor = 'linear-gradient(135deg,#f0faf5,#e1f5ee)'; // green
+        tagText = 'ミルパスゾーン';
+        msg = 'ついにスーパーより安くなりました！もうスーパーに<br>行く理由がないですね。ミルパス一択です！';
+      } else if (w >= 17 && w <= 19) {
+        tagColor = 'linear-gradient(135deg,#f0faf5,#e1f5ee)'; // green
+        tagText = 'ミルパスゾーン';
+        msg = 'スーパーより安いのに、重い荷物を運ぶ必要もなし。<br>「安くて・便利」の最強プランですね！';
+      } else if (w >= 20 && w <= 27) {
+        tagColor = 'linear-gradient(135deg,#f0faf5,#e1f5ee)'; // green
+        tagText = 'ミルパスゾーン';
+        msg = 'ご家族みんなで健康習慣が続けられます。<br>これだけ頼んでもお財布に優しいのがうれしいですね！';
+      } else if (w >= 28 && w <= 35) {
+        tagColor = 'linear-gradient(135deg,#f0faf5,#e1f5ee)'; // green
+        tagText = 'ミルパスゾーン';
+        msg = `驚きの${milpassUnit}円台！ご家族全員で毎日飲んでも、<br>スーパーより断然お得になってきますよ。`;
+      }
+
+      msgBadge.style.background = tagColor;
+      msgTag.innerText = tagText;
+      msgTag.style.color = (w <= 9 && w !== 9) ? '#1a6abf' : '#0f6e56'; 
+      if (w === 9) msgTag.style.color = '#d35400'; 
+      msgText.innerHTML = msg;
+
+      // アコーディオンパネル表示有無
+      if (w <= 9) {
+        accPanel.style.display = 'block';
+        sliderCardWrap.classList.remove('closed');
+      } else {
+        accPanel.style.display = 'none';
+        sliderCardWrap.classList.add('closed');
+      }
+
+      // 注釈
+      let formSuper = superDisp.toLocaleString();
+      let superText = timeToggleOn ? `時間込み${formSuper}円` : `${formSuper}円／月`;
+      formulaText.innerHTML = `※ミルパス：基本料2,980円＋（週${w}本×100円×4週）＝${milpassDisp.toLocaleString()}円／月　※スーパー：${superText}　※通常宅配：${normalDisp.toLocaleString()}円／月`;
+    }
+
+    simInput.addEventListener('input', updateSimulatorV2);
+    updateSimulatorV2(); // init
 
     // Product Lineup Data
     const products = [
