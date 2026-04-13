@@ -34,7 +34,7 @@
     }
 
     html {
-      scroll-behavior: smooth;
+      /* JSで制御するため削除 */
     }
 
     body {
@@ -1580,10 +1580,77 @@
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     });
 
-    // Bottom Fixed Bar Show/Hide
+    // ---------------------------------------------------------
+    // [Task 2] Custom Smooth Scroll (1200ms)
+    // ---------------------------------------------------------
+    function smoothScrollTo(targetY, duration) {
+      const startY = window.scrollY;
+      const distance = targetY - startY;
+      let startTime = null;
+
+      function easeInOutCubic(t) {
+        return t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        window.scrollTo(0, startY + distance * ease);
+        if (elapsed < duration) {
+          requestAnimationFrame(step);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    // CTAボタン（#apply-top行き）のクリックイベントを奪取
+    document.addEventListener('click', (e) => {
+      const anchor = e.target.closest('a[href="#apply-top"]');
+      if (anchor) {
+        e.preventDefault();
+        const target = document.querySelector('#apply-top');
+        if (target) {
+          const targetY = target.getBoundingClientRect().top + window.scrollY;
+          smoothScrollTo(targetY, 1200); // 1.2秒でスクロール
+        }
+      }
+    });
+
+    // ---------------------------------------------------------
+    // [Task 1] Bottom Fixed Bar Show/Hide (FV+Exclusion Zones)
+    // ---------------------------------------------------------
     window.addEventListener('scroll', () => {
       const bottomBar = document.getElementById('bottom-bar');
-      if (window.scrollY > 600) {
+      const simulator = document.getElementById('simulator');
+      const applyBody = document.getElementById('apply');
+      const applyTop = document.getElementById('apply-top');
+
+      if (!bottomBar || !simulator || !applyBody || !applyTop) return;
+
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      // 1. 基本：FV(600px)を過ぎたら表示
+      let shouldShow = scrollY > 600;
+
+      // 2. 除外：シミュレーターが見えている間は非表示
+      const simRect = simulator.getBoundingClientRect();
+      const inSimulator = (simRect.top < windowHeight && simRect.bottom > 0);
+      if (inSimulator) shouldShow = false;
+
+      // 3. 除外：最下部の申し込みエリアが見えている間は非表示
+      const applyTopRect = applyTop.getBoundingClientRect();
+      const footer = document.querySelector('.footer');
+      const footerRect = footer ? footer.getBoundingClientRect() : { bottom: windowHeight + 1 };
+      // 画像トップからフッター下端までを申し込みエリアとみなす
+      const inApply = (applyTopRect.top < windowHeight && footerRect.bottom > 0);
+      if (inApply) shouldShow = false;
+
+      if (shouldShow) {
         bottomBar.classList.add('show');
       } else {
         bottomBar.classList.remove('show');
