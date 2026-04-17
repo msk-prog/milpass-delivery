@@ -269,13 +269,26 @@
       margin-bottom: 1.5rem;
     }
 
-    .sim-link {
-      display: block;
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.9rem;
+    .btn-secondary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--white);
       color: var(--main-color);
-      text-decoration: underline;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 50px;
+      padding: 1rem;
+      width: 100%;
+      height: 52px;
+      border: 2px solid var(--main-color);
+      text-align: center;
+      margin-top: 0.75rem;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+    .btn-secondary:hover {
+      background-color: var(--sub-color);
     }
 
     .hero-image {
@@ -593,29 +606,22 @@
       background: var(--main-color);
       color: #fff;
     }
-    .sim-new-products-scroll {
+    .sim-new-products-grid {
       display: flex;
-      overflow-x: auto;
-      gap: 6px;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
       padding-bottom: 4px;
     }
-    .sim-new-products-scroll::-webkit-scrollbar {
-      height: 4px;
-    }
-    .sim-new-products-scroll::-webkit-scrollbar-thumb {
-      background: #ccc;
-      border-radius: 4px;
-    }
     .sim-new-tag {
-      flex-shrink: 0;
-      height: 36px;
-      border-radius: 18px;
+      height: 44px;
+      border-radius: 22px;
       border: 1px solid var(--main-color);
       background: #fff;
       color: var(--main-color);
       display: flex;
       align-items: center;
-      padding: 0 10px 0 4px;
+      padding: 6px 12px;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -624,15 +630,15 @@
       color: #fff;
     }
     .sim-new-tag-img {
-      width: 24px;
-      height: 24px;
+      width: 30px;
+      height: 30px;
       object-fit: contain;
       margin-right: 4px;
       border-radius: 50%;
       background: #fff;
     }
     .sim-new-tag-text {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: bold;
       white-space: nowrap;
     }
@@ -1018,7 +1024,7 @@
       <p class="hero-note">※一部、130円・200円等の割引商品もございます</p>
 
       <a href="#apply-top" class="btn-cta">🎁 無料サンプル7種類セットを申し込む ＞</a>
-      <a href="#simulator" class="sim-link">▼ まずは計算！家族まとめ割シミュレーション ＞</a>
+      <a href="#simulator" class="btn-secondary">📊 家族まとめ割シミュレーション ▶</a>
 
       <img src="ヒーロー画像.png" alt="ミルパス ヒーロー画像" class="hero-image">
     </section>
@@ -1106,6 +1112,16 @@
     </section>
 
 
+    <!-- 7. 商品ラインアップ -->
+    <section class="section section-bg-sub fade-in">
+      <h2 class="title">宅配で選ばれている<br>「厳選人気TOP7」<br><span style="font-size:0.9rem;color:#666;">⤵ 詳しく見たい商品をポチッと押してね
+          ⤵</span></h2>
+
+      <div class="product-grid" id="product-grid">
+        <!-- JSで動的に生成 -->
+      </div>
+    </section>
+
     <!-- 6. 料金シミュレーター -->
     <section id="simulator" class="section fade-in" style="padding: 10px 0;">
       <div class="sim-new-wrapper">
@@ -1173,16 +1189,6 @@
         <div class="sim-new-note" style="margin-top:6px;">※これはシミュレーションです。<br>実際の宅配商品・本数はご自由にお決めいただけます♪</div>
       </div>
     </section>
-    <!-- 7. 商品ラインアップ -->
-    <section class="section section-bg-sub fade-in">
-      <h2 class="title">宅配で選ばれている<br>「厳選人気TOP7」<br><span style="font-size:0.9rem;color:#666;">⤵ 詳しく見たい商品をポチッと押してね
-          ⤵</span></h2>
-
-      <div class="product-grid" id="product-grid">
-        <!-- JSで動的に生成 -->
-      </div>
-    </section>
-
     <!-- 8. 申込の流れ -->
     <section class="section fade-in">
       <h2 class="title">まずは「お試し」から。<br>無理なく始める3ステップ</h2>
@@ -1343,10 +1349,11 @@
 
     // CTAボタン（#apply-top行き）のクリックイベントを奪取
     document.addEventListener('click', (e) => {
-      const anchor = e.target.closest('a[href="#apply-top"]');
+      const anchor = e.target.closest('a[href="#apply-top"], a[href="#simulator"]');
       if (anchor) {
         e.preventDefault();
-        const target = document.querySelector('#apply-top');
+        const targetId = anchor.getAttribute('href');
+        const target = document.querySelector(targetId);
         if (target) {
           const targetY = target.getBoundingClientRect().top + window.scrollY;
           smoothScrollTo(targetY, 1200); // 1.2秒でスクロール
@@ -1459,12 +1466,13 @@
       
       if (monthlyBottles >= 40) {
         const diff = normalMonthly - milpassMonthly;
-        let perDayPerPerson = milpassMonthly / 30 / selectedPeople;
+        const perBottle = Math.round(milpassMonthly / monthlyBottles);
+        const normalPerBottle = Math.round(normalMonthly / monthlyBottles);
         
         let compareText = "";
-        if (perDayPerPerson < 100) compareText = "（自販機のお茶より安い）";
-        else if (perDayPerPerson < 150) compareText = "（缶コーヒー1本より安い）";
-        else if (perDayPerPerson < 200) compareText = "（コンビニコーヒーより安い）";
+        if (perBottle < 120) compareText = "（自販機のお茶より安い）";
+        else if (perBottle < 150) compareText = "（スーパーのR-1（約150円）より安い）";
+        else if (perBottle < 175) compareText = `（通常宅配（${normalPerBottle}円）より安い）`;
         
         let formulaText = selectedCount === 1 
           ? `${selectedPeople}人 × 1種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`
@@ -1481,7 +1489,7 @@
             <span class="sim-new-res-val-sub">月${normalMonthly.toLocaleString()}円</span>
           </div>
           <div class="sim-new-res-diff">💚 毎月${diff.toLocaleString()}円おトク</div>
-          <div class="sim-new-res-daily">1日あたり${Math.round(perDayPerPerson)}円／お一人様 <br>${compareText}</div>
+          <div class="sim-new-res-daily">1本あたり実質${perBottle}円 <br>${compareText}</div>
         `;
         resultCard.style.borderColor = "var(--main-color)";
       } else {
