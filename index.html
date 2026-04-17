@@ -615,14 +615,14 @@
     .sim-new-tag {
       width: 100%;
       box-sizing: border-box;
-      height: 48px;
-      border-radius: 24px;
+      height: 64px;
+      border-radius: 32px;
       border: 1px solid var(--main-color);
       background: #fff;
       color: var(--main-color);
       display: flex;
       align-items: center;
-      padding: 6px 8px;
+      padding: 4px 10px 4px 4px;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -634,8 +634,8 @@
       flex-shrink: 0;
       width: 56px;
       height: 56px;
-      object-fit: contain;
-      margin-right: 6px;
+      object-fit: contain;       /* 既にあるが再確認 */
+      margin-right: 8px;
       border-radius: 50%;
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -1146,7 +1146,7 @@
         <!-- STEP 2 -->
         <div class="sim-new-card">
           <span class="sim-step-label">STEP 2：飲みたい商品（複数選択OK）</span>
-          <div class="sim-new-products-scroll">
+          <div class="sim-new-products-grid">
             <div class="sim-new-tag active" data-id="r1" onclick="toggleProduct('r1')">
               <img src="R-1.png" class="sim-new-tag-img">
               <span class="sim-new-tag-text">R-1</span>
