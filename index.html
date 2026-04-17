@@ -1443,7 +1443,7 @@
       }
 
       const MONTHLY_FEE = 2980;
-      const monthlyBottles = selectedPeople * selectedCount * 30;
+      const monthlyBottles = selectedPeople * selectedCount * 28;
       const milpassMonthly = MONTHLY_FEE + (monthlyBottles * 100);
       
       let normalPriceAvg = 175;
@@ -1466,8 +1466,12 @@
         else if (perDayPerPerson < 150) compareText = "（缶コーヒー1本より安い）";
         else if (perDayPerPerson < 200) compareText = "（コンビニコーヒーより安い）";
         
+        let formulaText = selectedCount === 1 
+          ? `${selectedPeople}人 × 1種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`
+          : `${selectedPeople}人 × ${selectedCount}種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`;
+        
         resultCard.innerHTML = `
-          <div class="sim-new-res-header">${selectedPeople}人家族・月${monthlyBottles}本の場合</div>
+          <div style="font-size: 11px; color: #888; text-align: center; margin-bottom: 8px;">${formulaText}</div>
           <div class="sim-new-res-row">
             <span class="sim-new-res-label">ミルパス</span>
             <span class="sim-new-res-val-main">月${milpassMonthly.toLocaleString()}円</span>
@@ -1481,7 +1485,12 @@
         `;
         resultCard.style.borderColor = "var(--main-color)";
       } else {
+        let formulaText = selectedCount === 1 
+          ? `${selectedPeople}人 × 1種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`
+          : `${selectedPeople}人 × ${selectedCount}種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`;
+
         resultCard.innerHTML = `
+          <div style="font-size: 11px; color: #888; text-align: center; margin-bottom: 8px;">${formulaText}</div>
           <div class="sim-new-res-header" style="color:var(--accent-color); font-weight:bold;">今の選択では通常宅配がおトクです</div>
           <div class="sim-new-res-row">
             <span class="sim-new-res-label" style="color:#999;font-weight:normal;">ミルパス</span>
