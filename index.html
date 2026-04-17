@@ -582,30 +582,6 @@
       margin-bottom: 6px;
       display: block;
     }
-    .sim-new-people-row {
-      display: flex;
-      gap: 4px;
-      justify-content: space-between;
-    }
-    .sim-new-btn-person {
-      flex: 1;
-      height: 32px;
-      border-radius: 6px;
-      border: 1px solid var(--main-color);
-      background: #fff;
-      color: var(--main-color);
-      font-size: 12px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-    .sim-new-btn-person.active {
-      background: var(--main-color);
-      color: #fff;
-    }
     .sim-new-products-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -615,14 +591,15 @@
     .sim-new-tag {
       width: 100%;
       box-sizing: border-box;
-      height: 64px;
-      border-radius: 32px;
+      min-height: 72px;
+      height: auto;
+      border-radius: 36px;
       border: 1px solid var(--main-color);
       background: #fff;
       color: var(--main-color);
       display: flex;
       align-items: center;
-      padding: 4px 10px 4px 4px;
+      padding: 6px 12px 6px 4px;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -641,10 +618,60 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .sim-new-tag-text {
-      font-size: 13px;
+      font-size: 15px;
       font-weight: bold;
       white-space: normal;
       line-height: 1.2;
+      flex: 1;
+      text-align: center;
+    }
+    .sim-new-tag[data-id="gluco"] .sim-new-tag-text {
+      font-size: 12px;
+      line-height: 1.15;
+    }
+    .sim-new-tag-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      padding-left: 4px;
+    }
+    .sim-new-qty-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: flex-start;
+    }
+    .sim-new-qty-btn {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: none;
+      background: var(--main-color);
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      padding: 0;
+    }
+    .sim-new-tag.active .sim-new-qty-btn {
+      background: rgba(255,255,255,0.3);
+      color: #fff;
+    }
+    .sim-new-qty-val {
+      font-size: 16px;
+      font-weight: bold;
+      min-width: 24px;
+      text-align: center;
+    }
+    .sim-new-qty-unit {
+      font-size: 11px;
+      opacity: 0.8;
     }
     .sim-new-prod-desc {
       font-size: 11px;
@@ -1130,53 +1157,95 @@
     <section id="simulator" class="section fade-in" style="padding: 10px 0;">
       <div class="sim-new-wrapper">
         <h2 class="sim-new-title">ミルパス 料金シミュレーター</h2>
-        
         <!-- STEP 1 -->
         <div class="sim-new-card">
-          <span class="sim-step-label">STEP 1：家族の人数を選択</span>
-          <div class="sim-new-people-row">
-            <div class="sim-new-btn-person" data-val="1" onclick="selectPeople(1)">1人</div>
-            <div class="sim-new-btn-person" data-val="2" onclick="selectPeople(2)">2人</div>
-            <div class="sim-new-btn-person active" data-val="3" onclick="selectPeople(3)">3人</div>
-            <div class="sim-new-btn-person" data-val="4" onclick="selectPeople(4)">4人</div>
-            <div class="sim-new-btn-person" data-val="5" onclick="selectPeople(5)">5人</div>
-          </div>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="sim-new-card">
-          <span class="sim-step-label">STEP 2：飲みたい商品（複数選択OK）</span>
+          <span class="sim-step-label">STEP 1：飲みたい商品の週本数を選ぶ</span>
           <div class="sim-new-products-grid">
-            <div class="sim-new-tag active" data-id="r1" onclick="toggleProduct('r1')">
-              <img src="R-1.png" class="sim-new-tag-img">
-              <span class="sim-new-tag-text">R-1</span>
+            <div class="sim-new-tag active" data-id="r1">
+              <img src="R-1.png" class="sim-new-tag-img" style="width: 46px; height: 46px;">
+              <div class="sim-new-tag-body">
+                <span class="sim-new-tag-text">R-1ヨーグルト</span>
+                <div class="sim-new-qty-row">
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('r1', -1)">−</button>
+                  <span class="sim-new-qty-val" id="qty-r1">7</span>
+                  <span class="sim-new-qty-unit">本/週</span>
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('r1', +1)">＋</button>
+                </div>
+              </div>
             </div>
-            <div class="sim-new-tag" data-id="milk" onclick="toggleProduct('milk')">
+            <div class="sim-new-tag" data-id="milk">
               <img src="ミルクで元気.png" class="sim-new-tag-img">
-              <span class="sim-new-tag-text">ミルクで元気</span>
+              <div class="sim-new-tag-body">
+                <span class="sim-new-tag-text">ミルクで元気</span>
+                <div class="sim-new-qty-row">
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('milk', -1)">−</button>
+                  <span class="sim-new-qty-val" id="qty-milk">0</span>
+                  <span class="sim-new-qty-unit">本/週</span>
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('milk', +1)">＋</button>
+                </div>
+              </div>
             </div>
-            <div class="sim-new-tag" data-id="lg21" onclick="toggleProduct('lg21')">
-              <img src="LG21.png" class="sim-new-tag-img">
-              <span class="sim-new-tag-text">LG21</span>
+            <div class="sim-new-tag" data-id="lg21">
+              <img src="LG21.png" class="sim-new-tag-img" style="width: 46px; height: 46px;">
+              <div class="sim-new-tag-body">
+                <span class="sim-new-tag-text">LG21ヨーグルト</span>
+                <div class="sim-new-qty-row">
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('lg21', -1)">−</button>
+                  <span class="sim-new-qty-val" id="qty-lg21">0</span>
+                  <span class="sim-new-qty-unit">本/週</span>
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('lg21', +1)">＋</button>
+                </div>
+              </div>
             </div>
-            <div class="sim-new-tag" data-id="gluco" onclick="toggleProduct('gluco')">
+            <div class="sim-new-tag" data-id="gluco">
               <img src="グルコラ.png" class="sim-new-tag-img">
-              <span class="sim-new-tag-text">グルコサミン</span>
+              <div class="sim-new-tag-body">
+                <span class="sim-new-tag-text">グルコサミン＆コラーゲン</span>
+                <div class="sim-new-qty-row">
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('gluco', -1)">−</button>
+                  <span class="sim-new-qty-val" id="qty-gluco">0</span>
+                  <span class="sim-new-qty-unit">本/週</span>
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('gluco', +1)">＋</button>
+                </div>
+              </div>
             </div>
-            <div class="sim-new-tag" data-id="sleep" onclick="toggleProduct('sleep')">
+            <div class="sim-new-tag" data-id="sleep">
               <img src="目と睡眠.png" class="sim-new-tag-img">
-              <span class="sim-new-tag-text">目と睡眠</span>
+              <div class="sim-new-tag-body">
+                <span class="sim-new-tag-text">目と睡眠Wサポート</span>
+                <div class="sim-new-qty-row">
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('sleep', -1)">−</button>
+                  <span class="sim-new-qty-val" id="qty-sleep">0</span>
+                  <span class="sim-new-qty-unit">本/週</span>
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('sleep', +1)">＋</button>
+                </div>
+              </div>
             </div>
-            <div class="sim-new-tag" data-id="star5" onclick="toggleProduct('star5')">
+            <div class="sim-new-tag" data-id="star5">
               <img src="5つ星.png" class="sim-new-tag-img">
-              <span class="sim-new-tag-text">5つ星</span>
+              <div class="sim-new-tag-body">
+                <span class="sim-new-tag-text">5つ星習慣</span>
+                <div class="sim-new-qty-row">
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('star5', -1)">−</button>
+                  <span class="sim-new-qty-val" id="qty-star5">0</span>
+                  <span class="sim-new-qty-unit">本/週</span>
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('star5', +1)">＋</button>
+                </div>
+              </div>
             </div>
-            <div class="sim-new-tag" data-id="choleste" onclick="toggleProduct('choleste')">
+            <div class="sim-new-tag" data-id="choleste">
               <img src="コレステ.png" class="sim-new-tag-img">
-              <span class="sim-new-tag-text">コレステ</span>
+              <div class="sim-new-tag-body">
+                <span class="sim-new-tag-text">コレステさらり</span>
+                <div class="sim-new-qty-row">
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('choleste', -1)">−</button>
+                  <span class="sim-new-qty-val" id="qty-choleste">0</span>
+                  <span class="sim-new-qty-unit">本/週</span>
+                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('choleste', +1)">＋</button>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="sim-new-prod-desc" id="sim-new-desc-text">子供から大人まで。毎朝の免疫ケアに</div>
         </div>
 
         <!-- STEP 3 -->
@@ -1187,7 +1256,10 @@
           </div>
         </div>
         
-        <div id="choleste-note" class="sim-new-note" style="display:none; font-size:10px; margin-top:2px;">※コレステさらりは130円/本</div>
+        <div id="choleste-note"
+     style="display:none; font-size:11px; color:#888; text-align:center; margin-top:6px;">
+  ※コレステさらりは1本130円、他の商品は1本100円です
+</div>
 
         <a href="#apply-top" class="sim-new-cta">🎁 まずは無料サンプルを試す ＞</a>
         <div class="sim-new-note" style="margin-top:6px;">※これはシミュレーションです。<br>実際の宅配商品・本数はご自由にお決めいただけます♪</div>
@@ -1405,103 +1477,94 @@
     // Simulator Logic
     // Simulator New Logic
     const newProducts = [
-      { id: 'r1', name: 'R-1', img: 'R-1.png', price: 100, normal: 175, desc: '子供から大人まで。毎朝の免疫ケアに' },
-      { id: 'milk', name: 'ミルクで元気', img: 'ミルクで元気.png', price: 100, normal: 170, desc: '1本で1日分のカルシウム＆鉄分' },
-      { id: 'lg21', name: 'LG21', img: 'LG21.png', price: 100, normal: 170, desc: '胃の負担が気になる方に' },
-      { id: 'gluco', name: 'グルコサミン', img: 'グルコラ.png', price: 100, normal: 180, desc: '関節・美容をまとめてケア' },
-      { id: 'sleep', name: '目と睡眠', img: '目と睡眠.png', price: 100, normal: 190, desc: 'スマホ疲れ・睡眠の質が気になる方に' },
-      { id: 'star5', name: '5つ星', img: '5つ星.png', price: 100, normal: 190, desc: '血圧・血糖・脂肪をまとめて対策' },
-      { id: 'choleste', name: 'コレステ', img: 'コレステ.png', price: 130, normal: 200, desc: 'コレステロールが気になりだしたら' }
+      { id: 'r1',       name: 'R-1ヨーグルト',           price: 100, normal: 175, qty: 7 },
+      { id: 'milk',     name: 'ミルクで元気',             price: 100, normal: 170, qty: 0 },
+      { id: 'lg21',     name: 'LG21ヨーグルト',          price: 100, normal: 170, qty: 0 },
+      { id: 'gluco',    name: 'グルコサミン＆コラーゲン', price: 100, normal: 180, qty: 0 },
+      { id: 'sleep',    name: '目と睡眠Wサポート',        price: 100, normal: 190, qty: 0 },
+      { id: 'star5',    name: '5つ星習慣',                price: 100, normal: 190, qty: 0 },
+      { id: 'choleste', name: 'コレステさらり',            price: 130, normal: 200, qty: 0 }
     ];
 
-    let selectedPeople = 3;
-    let selectedProdIds = ['r1'];
+    function changeQty(id, delta) {
+      const p = newProducts.find(x => x.id === id);
+      p.qty = Math.max(0, Math.min(35, p.qty + delta));
 
-    function selectPeople(n) {
-      selectedPeople = n;
-      document.querySelectorAll('.sim-new-btn-person').forEach(btn => {
-        if(parseInt(btn.getAttribute('data-val')) === n) btn.classList.add('active');
-        else btn.classList.remove('active');
-      });
-      updateNewSimulator();
-    }
+      document.getElementById('qty-' + id).innerText = p.qty;
+      const tagEl = document.querySelector(`.sim-new-tag[data-id="${id}"]`);
+      if (p.qty > 0) tagEl.classList.add('active');
+      else tagEl.classList.remove('active');
 
-    function toggleProduct(id) {
-      if (selectedProdIds.includes(id)) {
-        selectedProdIds = selectedProdIds.filter(x => x !== id);
-      } else {
-        selectedProdIds.push(id);
-      }
-      
-      document.querySelectorAll('.sim-new-tag').forEach(tag => {
-        if(selectedProdIds.includes(tag.getAttribute('data-id'))) tag.classList.add('active');
-        else tag.classList.remove('active');
-      });
       updateNewSimulator();
     }
 
     function updateNewSimulator() {
-      const prods = newProducts.filter(p => selectedProdIds.includes(p.id));
-      const selectedCount = prods.length;
-      
-      const descEl = document.getElementById('sim-new-desc-text');
+      const MONTHLY_FEE = 2980;
+
+      let totalBottlesMonth = 0;
+      let milpassProductCost = 0;
+      let normalProductCost = 0;
+      let hasCholeste = false;
+
+      newProducts.forEach(p => {
+        const monthlyQty = p.qty * 4;
+        totalBottlesMonth += monthlyQty;
+        milpassProductCost += monthlyQty * p.price;
+        normalProductCost += monthlyQty * p.normal;
+        if (p.id === 'choleste' && p.qty > 0) hasCholeste = true;
+      });
+
       const resultCard = document.getElementById('sim-new-result-content');
       const cholesteNote = document.getElementById('choleste-note');
-      
-      if (selectedCount === 0) {
-        descEl.innerText = "商品を選んでください";
-        resultCard.innerHTML = `<div style="font-weight:bold; color:var(--accent-color); padding:20px 0;">商品を選んでください</div>`;
+
+      // 0本のとき
+      if (totalBottlesMonth === 0) {
+        resultCard.innerHTML = `<div style="font-weight:bold; color:var(--accent-color); padding:20px 0;">商品の本数を選んでください</div>`;
         resultCard.style.borderColor = "#ccc";
         cholesteNote.style.display = 'none';
         return;
       }
-      
-      if (selectedCount === 1) {
-        descEl.innerText = prods[0].desc;
-      } else {
-        descEl.innerText = `${selectedCount}種類選択中`;
+
+      const milpassMonthly = MONTHLY_FEE + milpassProductCost;
+      const normalMonthly = normalProductCost;
+      const diff = normalMonthly - milpassMonthly;
+      const weeklyTotal = totalBottlesMonth / 4;
+      const perBottle = Math.round(milpassMonthly / totalBottlesMonth);
+
+      // コレステ注記
+      cholesteNote.style.display = hasCholeste ? 'block' : 'none';
+      if (hasCholeste) {
+        cholesteNote.innerText = "※コレステさらりは1本130円、他の商品は1本100円です";
       }
 
-      const MONTHLY_FEE = 2980;
-      const monthlyBottles = selectedPeople * 28;
-      
-      const avgMilpass = prods.reduce((sum, p) => sum + p.price, 0) / selectedCount;
-      const avgNormal = prods.reduce((sum, p) => sum + p.normal, 0) / selectedCount;
-      
-      const milpassMonthly = MONTHLY_FEE + Math.round(monthlyBottles * avgMilpass);
-      const normalMonthly = Math.round(monthlyBottles * avgNormal);
-      
-      const hasCholeste = prods.some(p => p.id === 'choleste');
-      if (hasCholeste) {
-        cholesteNote.style.display = 'block';
-        cholesteNote.innerText = "※コレステさらりは1本130円、他の商品は1本100円です";
-      } else {
-        cholesteNote.style.display = 'none';
-      }
-      
-      const diff = normalMonthly - milpassMonthly;
-      
-      let headerStr = `<div style="font-size: 13px; color: #555; font-weight: bold; text-align: center; margin-bottom: 12px;">${selectedPeople}人家族・月${monthlyBottles}本</div>`;
-      
+      // ヘッダー（計算式表示）
+      let headerStr = `<div style="font-size:13px; color:#555; font-weight:bold; text-align:center; margin-bottom:12px;">週${weeklyTotal}本 × 4週 ＝ 月${totalBottlesMonth}本</div>`;
+
       let resultHTML = headerStr + `
-          <div class="sim-new-res-row">
-            <span class="sim-new-res-label">ミルパス</span>
-            <span class="sim-new-res-val-main">月${milpassMonthly.toLocaleString()}円</span>
-          </div>
-          <div class="sim-new-res-row" style="margin-bottom:8px;">
-            <span class="sim-new-res-label" style="color:#999;font-weight:normal;">通常宅配</span>
-            <span class="sim-new-res-val-sub">月${normalMonthly.toLocaleString()}円</span>
-          </div>
+        <div class="sim-new-res-row">
+          <span class="sim-new-res-label">ミルパス</span>
+          <span class="sim-new-res-val-main">月${milpassMonthly.toLocaleString()}円</span>
+        </div>
+        <div class="sim-new-res-row" style="margin-bottom:8px;">
+          <span class="sim-new-res-label" style="color:#999;font-weight:normal;">通常宅配</span>
+          <span class="sim-new-res-val-sub">月${normalMonthly.toLocaleString()}円</span>
+        </div>
       `;
-      
+
       if (diff > 0) {
         resultHTML += `<div class="sim-new-res-diff" style="font-size:14px; padding:6px; margin-top:8px;">💚 毎月${diff.toLocaleString()}円おトク！</div>`;
         resultCard.style.borderColor = "var(--main-color)";
+      } else if (diff === 0) {
+        resultHTML += `<div class="sim-new-res-diff" style="font-size:13px; padding:6px; margin-top:8px; background:#f5f5f5; color:#666;">同じ金額です</div>`;
+        resultCard.style.borderColor = "#ccc";
       } else {
-        resultHTML += `<div class="sim-new-res-diff" style="font-size:13px; padding:6px; margin-top:8px; background:#fce4e4; color:#c0392b;">通常宅配がおトクです</div>`;
+        resultHTML += `<div class="sim-new-res-diff" style="font-size:13px; padding:6px; margin-top:8px; background:#fce4e4; color:#c0392b;">通常宅配が${Math.abs(diff).toLocaleString()}円おトクです<br><span style="font-size:10px;">※本数を増やすとミルパスがお得になります</span></div>`;
         resultCard.style.borderColor = "#ccc";
       }
-      
+
+      // 1本あたり実質単価
+      resultHTML += `<div style="font-size:12px; color:#666; text-align:center; margin-top:6px;">ミルパスなら1本あたり実質 <span style="font-weight:bold; color:var(--main-color); font-size:14px;">${perBottle}円</span></div>`;
+
       resultCard.innerHTML = resultHTML;
     }
 
