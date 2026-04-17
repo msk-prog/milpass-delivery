@@ -562,7 +562,7 @@
       margin: 0 auto;
     }
     .sim-new-title {
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--main-color);
       text-align: center;
@@ -585,7 +585,7 @@
     .sim-new-products-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 2px;
       padding-bottom: 4px;
     }
     .sim-new-tag {
@@ -593,7 +593,7 @@
       box-sizing: border-box;
       min-height: 72px;
       height: auto;
-      border-radius: 36px;
+      border-radius: 12px;
       border: 1px solid var(--main-color);
       background: #fff;
       color: var(--main-color);
@@ -628,6 +628,7 @@
     .sim-new-tag[data-id="gluco"] .sim-new-tag-text {
       font-size: 12px;
       line-height: 1.15;
+      text-align: center;
     }
     .sim-new-tag-body {
       flex: 1;
@@ -640,39 +641,24 @@
     .sim-new-qty-row {
       display: flex;
       align-items: center;
-      gap: 6px;
-      justify-content: flex-start;
-    }
-    .sim-new-qty-btn {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      border: none;
-      background: var(--main-color);
-      color: #fff;
-      font-weight: bold;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      line-height: 1;
-      padding: 0;
+      margin-top: 2px;
+      width: 100%;
     }
-    .sim-new-tag.active .sim-new-qty-btn {
-      background: rgba(255,255,255,0.3);
-      color: #fff;
-    }
-    .sim-new-qty-val {
-      font-size: 16px;
+    .sim-new-qty-select {
+      width: 90px;
+      padding: 4px;
+      border-radius: 4px;
+      border: 1px solid var(--main-color);
+      color: var(--main-color);
       font-weight: bold;
-      min-width: 24px;
-      text-align: center;
+      font-size: 13px;
+      background: #fff;
     }
-    .sim-new-qty-unit {
-      font-size: 11px;
-      opacity: 0.8;
+    .sim-new-tag.active .sim-new-qty-select {
+      border: 2px solid var(--main-color);
     }
+    .sim-new-tag.active
     .sim-new-prod-desc {
       font-size: 11px;
       color: #666;
@@ -1159,96 +1145,74 @@
         <h2 class="sim-new-title">ミルパス 料金シミュレーター</h2>
         <!-- STEP 1 -->
         <div class="sim-new-card">
-          <span class="sim-step-label">STEP 1：飲みたい商品の週本数を選ぶ</span>
+          
           <div class="sim-new-products-grid">
-            <div class="sim-new-tag active" data-id="r1">
-              <img src="R-1.png" class="sim-new-tag-img" style="width: 46px; height: 46px;">
+            <div class="sim-new-tag" data-id="r1" onclick="document.getElementById('qty-r1').focus();">
+              <img src="R-1.png" class="sim-new-tag-img" style="width: 40px; height: 40px; object-fit: contain;">
               <div class="sim-new-tag-body">
-                <span class="sim-new-tag-text">R-1ヨーグルト</span>
+                <span class="sim-new-tag-text" style="text-align: center;">R-1<br>ヨーグルト</span>
                 <div class="sim-new-qty-row">
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('r1', -1)">−</button>
-                  <span class="sim-new-qty-val" id="qty-r1">7</span>
-                  <span class="sim-new-qty-unit">本/週</span>
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('r1', +1)">＋</button>
+                  <select class="sim-new-qty-select" id="qty-r1" onchange="changeQty('r1', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
                 </div>
               </div>
             </div>
-            <div class="sim-new-tag" data-id="milk">
+            <div class="sim-new-tag" data-id="milk" onclick="document.getElementById('qty-milk').focus();">
               <img src="ミルクで元気.png" class="sim-new-tag-img">
               <div class="sim-new-tag-body">
-                <span class="sim-new-tag-text">ミルクで元気</span>
+                <span class="sim-new-tag-text" style="text-align: center;">ミルクで元気</span>
                 <div class="sim-new-qty-row">
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('milk', -1)">−</button>
-                  <span class="sim-new-qty-val" id="qty-milk">0</span>
-                  <span class="sim-new-qty-unit">本/週</span>
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('milk', +1)">＋</button>
+                  <select class="sim-new-qty-select" id="qty-milk" onchange="changeQty('milk', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
                 </div>
               </div>
             </div>
-            <div class="sim-new-tag" data-id="lg21">
-              <img src="LG21.png" class="sim-new-tag-img" style="width: 46px; height: 46px;">
+            <div class="sim-new-tag" data-id="lg21" onclick="document.getElementById('qty-lg21').focus();">
+              <img src="LG21.png" class="sim-new-tag-img" style="width: 40px; height: 40px; object-fit: contain;">
               <div class="sim-new-tag-body">
-                <span class="sim-new-tag-text">LG21ヨーグルト</span>
+                <span class="sim-new-tag-text" style="text-align: center;">LG21<br>ヨーグルト</span>
                 <div class="sim-new-qty-row">
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('lg21', -1)">−</button>
-                  <span class="sim-new-qty-val" id="qty-lg21">0</span>
-                  <span class="sim-new-qty-unit">本/週</span>
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('lg21', +1)">＋</button>
+                  <select class="sim-new-qty-select" id="qty-lg21" onchange="changeQty('lg21', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
                 </div>
               </div>
             </div>
-            <div class="sim-new-tag" data-id="gluco">
+            <div class="sim-new-tag" data-id="gluco" onclick="document.getElementById('qty-gluco').focus();">
               <img src="グルコラ.png" class="sim-new-tag-img">
               <div class="sim-new-tag-body">
-                <span class="sim-new-tag-text">グルコサミン＆コラーゲン</span>
+                <span class="sim-new-tag-text" style="text-align: center;">グルコサミン＆<br>コラーゲン</span>
                 <div class="sim-new-qty-row">
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('gluco', -1)">−</button>
-                  <span class="sim-new-qty-val" id="qty-gluco">0</span>
-                  <span class="sim-new-qty-unit">本/週</span>
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('gluco', +1)">＋</button>
+                  <select class="sim-new-qty-select" id="qty-gluco" onchange="changeQty('gluco', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
                 </div>
               </div>
             </div>
-            <div class="sim-new-tag" data-id="sleep">
+            <div class="sim-new-tag" data-id="sleep" onclick="document.getElementById('qty-sleep').focus();">
               <img src="目と睡眠.png" class="sim-new-tag-img">
               <div class="sim-new-tag-body">
-                <span class="sim-new-tag-text">目と睡眠Wサポート</span>
+                <span class="sim-new-tag-text" style="text-align: center;">目と睡眠<br>Wサポート</span>
                 <div class="sim-new-qty-row">
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('sleep', -1)">−</button>
-                  <span class="sim-new-qty-val" id="qty-sleep">0</span>
-                  <span class="sim-new-qty-unit">本/週</span>
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('sleep', +1)">＋</button>
+                  <select class="sim-new-qty-select" id="qty-sleep" onchange="changeQty('sleep', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
                 </div>
               </div>
             </div>
-            <div class="sim-new-tag" data-id="star5">
+            <div class="sim-new-tag" data-id="star5" onclick="document.getElementById('qty-star5').focus();">
               <img src="5つ星.png" class="sim-new-tag-img">
               <div class="sim-new-tag-body">
-                <span class="sim-new-tag-text">5つ星習慣</span>
+                <span class="sim-new-tag-text" style="text-align: center;">5つ星習慣</span>
                 <div class="sim-new-qty-row">
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('star5', -1)">−</button>
-                  <span class="sim-new-qty-val" id="qty-star5">0</span>
-                  <span class="sim-new-qty-unit">本/週</span>
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('star5', +1)">＋</button>
+                  <select class="sim-new-qty-select" id="qty-star5" onchange="changeQty('star5', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
                 </div>
               </div>
             </div>
-            <div class="sim-new-tag" data-id="choleste">
+            <div class="sim-new-tag" data-id="choleste" onclick="document.getElementById('qty-choleste').focus();">
               <img src="コレステ.png" class="sim-new-tag-img">
               <div class="sim-new-tag-body">
-                <span class="sim-new-tag-text">コレステさらり</span>
+                <span class="sim-new-tag-text" style="text-align: center;">コレステ<br>さらり</span>
                 <div class="sim-new-qty-row">
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('choleste', -1)">−</button>
-                  <span class="sim-new-qty-val" id="qty-choleste">0</span>
-                  <span class="sim-new-qty-unit">本/週</span>
-                  <button class="sim-new-qty-btn" onclick="event.stopPropagation(); changeQty('choleste', +1)">＋</button>
+                  <select class="sim-new-qty-select" id="qty-choleste" onchange="changeQty('choleste', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- STEP 3 -->
+<!-- STEP 3 -->
         <div>
           <span class="sim-step-label" style="text-align:center; margin-bottom: 4px;">👇 結果 👇</span>
           <div class="sim-new-result-card" id="sim-new-result-content">
@@ -1477,7 +1441,7 @@
     // Simulator Logic
     // Simulator New Logic
     const newProducts = [
-      { id: 'r1',       name: 'R-1ヨーグルト',           price: 100, normal: 175, qty: 7 },
+      { id: 'r1',       name: 'R-1ヨーグルト',           price: 100, normal: 175, qty: 0 },
       { id: 'milk',     name: 'ミルクで元気',             price: 100, normal: 170, qty: 0 },
       { id: 'lg21',     name: 'LG21ヨーグルト',          price: 100, normal: 170, qty: 0 },
       { id: 'gluco',    name: 'グルコサミン＆コラーゲン', price: 100, normal: 180, qty: 0 },
@@ -1486,11 +1450,10 @@
       { id: 'choleste', name: 'コレステさらり',            price: 130, normal: 200, qty: 0 }
     ];
 
-    function changeQty(id, delta) {
+    function changeQty(id, val) {
       const p = newProducts.find(x => x.id === id);
-      p.qty = Math.max(0, Math.min(35, p.qty + delta));
-
-      document.getElementById('qty-' + id).innerText = p.qty;
+      p.qty = parseInt(val, 10);
+      
       const tagEl = document.querySelector(`.sim-new-tag[data-id="${id}"]`);
       if (p.qty > 0) tagEl.classList.add('active');
       else tagEl.classList.remove('active');
@@ -1519,7 +1482,7 @@
 
       // 0本のとき
       if (totalBottlesMonth === 0) {
-        resultCard.innerHTML = `<div style="font-weight:bold; color:var(--accent-color); padding:20px 0;">商品の本数を選んでください</div>`;
+        resultCard.innerHTML = `<div style="font-size:16px; font-weight:bold; color:var(--accent-color); padding:30px 0; text-align:center;">商品の本数を選んでください</div>`;
         resultCard.style.borderColor = "#ccc";
         cholesteNote.style.display = 'none';
         return;
@@ -1538,32 +1501,32 @@
       }
 
       // ヘッダー（計算式表示）
-      let headerStr = `<div style="font-size:13px; color:#555; font-weight:bold; text-align:center; margin-bottom:12px;">週${weeklyTotal}本 × 4週 ＝ 月${totalBottlesMonth}本</div>`;
+      let headerStr = `<div style="font-size:15px; color:#555; font-weight:bold; text-align:center; margin-bottom:12px;">週${weeklyTotal}本 × 4週 ＝ 月${totalBottlesMonth}本</div>`;
 
       let resultHTML = headerStr + `
-        <div class="sim-new-res-row">
-          <span class="sim-new-res-label">ミルパス</span>
-          <span class="sim-new-res-val-main">月${milpassMonthly.toLocaleString()}円</span>
+        <div class="sim-new-res-row" style="font-size: 18px;">
+          <span class="sim-new-res-label" style="font-size:16px;">ミルパス</span>
+          <span class="sim-new-res-val-main" style="font-size:20px;">月${milpassMonthly.toLocaleString()}円</span>
         </div>
-        <div class="sim-new-res-row" style="margin-bottom:8px;">
+        <div class="sim-new-res-row" style="margin-bottom:8px; font-size: 15px;">
           <span class="sim-new-res-label" style="color:#999;font-weight:normal;">通常宅配</span>
-          <span class="sim-new-res-val-sub">月${normalMonthly.toLocaleString()}円</span>
+          <span class="sim-new-res-val-sub" style="font-size:16px;">月${normalMonthly.toLocaleString()}円</span>
         </div>
       `;
 
       if (diff > 0) {
-        resultHTML += `<div class="sim-new-res-diff" style="font-size:14px; padding:6px; margin-top:8px;">💚 毎月${diff.toLocaleString()}円おトク！</div>`;
+        resultHTML += `<div class="sim-new-res-diff" style="font-size:16px; padding:8px; margin-top:8px; font-weight:bold;">💚 毎月${diff.toLocaleString()}円おトク！</div>`;
         resultCard.style.borderColor = "var(--main-color)";
       } else if (diff === 0) {
-        resultHTML += `<div class="sim-new-res-diff" style="font-size:13px; padding:6px; margin-top:8px; background:#f5f5f5; color:#666;">同じ金額です</div>`;
+        resultHTML += `<div class="sim-new-res-diff" style="font-size:14px; padding:6px; margin-top:8px; background:#f5f5f5; color:#666;">同じ金額です</div>`;
         resultCard.style.borderColor = "#ccc";
       } else {
-        resultHTML += `<div class="sim-new-res-diff" style="font-size:13px; padding:6px; margin-top:8px; background:#fce4e4; color:#c0392b;">通常宅配が${Math.abs(diff).toLocaleString()}円おトクです<br><span style="font-size:10px;">※本数を増やすとミルパスがお得になります</span></div>`;
+        resultHTML += `<div class="sim-new-res-diff" style="font-size:14px; padding:6px; margin-top:8px; background:#fce4e4; color:#c0392b;">通常宅配が${Math.abs(diff).toLocaleString()}円おトクです<br><span style="font-size:11px;">※本数を増やすとミルパスがお得になります</span></div>`;
         resultCard.style.borderColor = "#ccc";
       }
 
       // 1本あたり実質単価
-      resultHTML += `<div style="font-size:12px; color:#666; text-align:center; margin-top:6px;">ミルパスなら1本あたり実質 <span style="font-weight:bold; color:var(--main-color); font-size:14px;">${perBottle}円</span></div>`;
+      resultHTML += `<div style="font-size:14px; color:#666; text-align:center; margin-top:8px;">ミルパスなら1本あたり実質 <span style="font-weight:bold; color:var(--main-color); font-size:16px;">${perBottle}円</span></div>`;
 
       resultCard.innerHTML = resultHTML;
     }
