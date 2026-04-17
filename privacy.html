@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プライバシーポリシー | ミルパス</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-color: #00A040;
+      --sub-color: #E8F5EC;
+      --text-color: #333333;
+      --bg-color: #F8F9FA;
+      --white: #FFFFFF;
+      --border-color: #DDDDDD;
+      --wrapper-max-width: 480px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrapper {
+      max-width: var(--wrapper-max-width);
+      margin: 0 auto;
+      background-color: var(--white);
+      min-height: 100vh;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+      padding-bottom: 40px;
+    }
+
+    .header {
+      padding: 1.5rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+      background-color: var(--white);
+    }
+
+    .header h1 {
+      font-size: 1.25rem;
+      color: var(--main-color);
+      letter-spacing: 0.05em;
+    }
+
+    .content {
+      padding: 2.5rem 1.5rem;
+    }
+
+    .intro {
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      color: var(--main-color);
+      border-bottom: 2px solid var(--sub-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+      margin-top: 2.5rem;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .info-list {
+      list-style-type: none;
+      margin-bottom: 1.5rem;
+      background: var(--bg-color);
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    .info-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+      font-weight: 700;
+    }
+
+    .info-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      margin-top: 3rem;
+      color: #666;
+      background: #F9F9F9;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .back-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 1rem;
+      background-color: var(--main-color);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 50px;
+      margin-top: 2.5rem;
+      transition: opacity 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .back-btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header">
+      <h1>プライバシーポリシー</h1>
+    </header>
+    <main class="content">
+      <p class="intro">
+        明治の宅配サービス事業者（以下、「当事業者」といいます）は、お客様の個人情報の保護について重要性を認識し、以下の通りプライバシーポリシーを定めます。
+      </p>
+
+      <h2>収集する個人情報</h2>
+      <p>当事業者は、サービス提供にあたり、以下の個人情報を収集いたします。</p>
+      <ul class="info-list">
+        <li>氏名</li>
+        <li>住所</li>
+        <li>電話番号</li>
+        <li>配達希望日時</li>
+      </ul>
+
+      <h2>利用目的</h2>
+      <p>収集した個人情報は、以下の目的のために利用いたします。</p>
+      <ul class="info-list">
+        <li>無料サンプル配送のため</li>
+      </ul>
+
+      <div class="note">
+        ※ご提供いただいた個人情報は、上記の目的以外には使用いたしません。また、法令に定めのある場合を除き、第三者に提供することはございません。
+      </div>
+
+      <a href="index.html" class="back-btn">トップページへ戻る</a>
+    </main>
+  </div>
+</body>
+</html>
