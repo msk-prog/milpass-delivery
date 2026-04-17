@@ -630,6 +630,23 @@
       line-height: 1.15;
       text-align: center;
     }
+    .sim-new-reset-btn {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 72px;
+      border-radius: 12px;
+      border: 1px solid var(--main-color);
+      background: #fff;
+      color: var(--main-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .sim-new-reset-btn:hover {
+      background: #f0fdf4;
+    }
     .sim-new-tag-body {
       flex: 1;
       display: flex;
@@ -646,14 +663,15 @@
       width: 100%;
     }
     .sim-new-qty-select {
-      width: 90px;
-      padding: 4px;
-      border-radius: 4px;
+      width: 80px;
+      padding: 6px;
+      border-radius: 6px;
       border: 1px solid var(--main-color);
       color: var(--main-color);
       font-weight: bold;
-      font-size: 13px;
+      font-size: 16px;
       background: #fff;
+      text-align: center;
     }
     .sim-new-tag.active .sim-new-qty-select {
       border: 2px solid var(--main-color);
@@ -1143,6 +1161,7 @@
     <section id="simulator" class="section fade-in" style="padding: 10px 0;">
       <div class="sim-new-wrapper">
         <h2 class="sim-new-title">ミルパス 料金シミュレーター</h2>
+        <div style="font-size: 12px; color: var(--main-color); text-align: center; margin-top: 4px;">1週間で飲む本数を選択してね♪</div>
         <!-- STEP 1 -->
         <div class="sim-new-card">
           
@@ -1152,7 +1171,7 @@
               <div class="sim-new-tag-body">
                 <span class="sim-new-tag-text" style="text-align: center;">R-1<br>ヨーグルト</span>
                 <div class="sim-new-qty-row">
-                  <select class="sim-new-qty-select" id="qty-r1" onchange="changeQty('r1', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
+                  <select class="sim-new-qty-select" id="qty-r1" onchange="changeQty('r1', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本</option><option value="1">1本</option><option value="2">2本</option><option value="3">3本</option><option value="4">4本</option><option value="5">5本</option><option value="6">6本</option><option value="7">7本</option><option value="8">8本</option><option value="9">9本</option><option value="10">10本</option><option value="11">11本</option><option value="12">12本</option><option value="13">13本</option><option value="14">14本</option><option value="15">15本</option><option value="16">16本</option><option value="17">17本</option><option value="18">18本</option><option value="19">19本</option><option value="20">20本</option><option value="21">21本</option><option value="22">22本</option><option value="23">23本</option><option value="24">24本</option><option value="25">25本</option><option value="26">26本</option><option value="27">27本</option><option value="28">28本</option><option value="29">29本</option><option value="30">30本</option><option value="31">31本</option><option value="32">32本</option><option value="33">33本</option><option value="34">34本</option><option value="35">35本</option></select>
                 </div>
               </div>
             </div>
@@ -1161,7 +1180,7 @@
               <div class="sim-new-tag-body">
                 <span class="sim-new-tag-text" style="text-align: center;">ミルクで元気</span>
                 <div class="sim-new-qty-row">
-                  <select class="sim-new-qty-select" id="qty-milk" onchange="changeQty('milk', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
+                  <select class="sim-new-qty-select" id="qty-milk" onchange="changeQty('milk', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本</option><option value="1">1本</option><option value="2">2本</option><option value="3">3本</option><option value="4">4本</option><option value="5">5本</option><option value="6">6本</option><option value="7">7本</option><option value="8">8本</option><option value="9">9本</option><option value="10">10本</option><option value="11">11本</option><option value="12">12本</option><option value="13">13本</option><option value="14">14本</option><option value="15">15本</option><option value="16">16本</option><option value="17">17本</option><option value="18">18本</option><option value="19">19本</option><option value="20">20本</option><option value="21">21本</option><option value="22">22本</option><option value="23">23本</option><option value="24">24本</option><option value="25">25本</option><option value="26">26本</option><option value="27">27本</option><option value="28">28本</option><option value="29">29本</option><option value="30">30本</option><option value="31">31本</option><option value="32">32本</option><option value="33">33本</option><option value="34">34本</option><option value="35">35本</option></select>
                 </div>
               </div>
             </div>
@@ -1170,7 +1189,7 @@
               <div class="sim-new-tag-body">
                 <span class="sim-new-tag-text" style="text-align: center;">LG21<br>ヨーグルト</span>
                 <div class="sim-new-qty-row">
-                  <select class="sim-new-qty-select" id="qty-lg21" onchange="changeQty('lg21', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
+                  <select class="sim-new-qty-select" id="qty-lg21" onchange="changeQty('lg21', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本</option><option value="1">1本</option><option value="2">2本</option><option value="3">3本</option><option value="4">4本</option><option value="5">5本</option><option value="6">6本</option><option value="7">7本</option><option value="8">8本</option><option value="9">9本</option><option value="10">10本</option><option value="11">11本</option><option value="12">12本</option><option value="13">13本</option><option value="14">14本</option><option value="15">15本</option><option value="16">16本</option><option value="17">17本</option><option value="18">18本</option><option value="19">19本</option><option value="20">20本</option><option value="21">21本</option><option value="22">22本</option><option value="23">23本</option><option value="24">24本</option><option value="25">25本</option><option value="26">26本</option><option value="27">27本</option><option value="28">28本</option><option value="29">29本</option><option value="30">30本</option><option value="31">31本</option><option value="32">32本</option><option value="33">33本</option><option value="34">34本</option><option value="35">35本</option></select>
                 </div>
               </div>
             </div>
@@ -1179,7 +1198,7 @@
               <div class="sim-new-tag-body">
                 <span class="sim-new-tag-text" style="text-align: center;">グルコサミン＆<br>コラーゲン</span>
                 <div class="sim-new-qty-row">
-                  <select class="sim-new-qty-select" id="qty-gluco" onchange="changeQty('gluco', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
+                  <select class="sim-new-qty-select" id="qty-gluco" onchange="changeQty('gluco', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本</option><option value="1">1本</option><option value="2">2本</option><option value="3">3本</option><option value="4">4本</option><option value="5">5本</option><option value="6">6本</option><option value="7">7本</option><option value="8">8本</option><option value="9">9本</option><option value="10">10本</option><option value="11">11本</option><option value="12">12本</option><option value="13">13本</option><option value="14">14本</option><option value="15">15本</option><option value="16">16本</option><option value="17">17本</option><option value="18">18本</option><option value="19">19本</option><option value="20">20本</option><option value="21">21本</option><option value="22">22本</option><option value="23">23本</option><option value="24">24本</option><option value="25">25本</option><option value="26">26本</option><option value="27">27本</option><option value="28">28本</option><option value="29">29本</option><option value="30">30本</option><option value="31">31本</option><option value="32">32本</option><option value="33">33本</option><option value="34">34本</option><option value="35">35本</option></select>
                 </div>
               </div>
             </div>
@@ -1188,7 +1207,7 @@
               <div class="sim-new-tag-body">
                 <span class="sim-new-tag-text" style="text-align: center;">目と睡眠<br>Wサポート</span>
                 <div class="sim-new-qty-row">
-                  <select class="sim-new-qty-select" id="qty-sleep" onchange="changeQty('sleep', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
+                  <select class="sim-new-qty-select" id="qty-sleep" onchange="changeQty('sleep', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本</option><option value="1">1本</option><option value="2">2本</option><option value="3">3本</option><option value="4">4本</option><option value="5">5本</option><option value="6">6本</option><option value="7">7本</option><option value="8">8本</option><option value="9">9本</option><option value="10">10本</option><option value="11">11本</option><option value="12">12本</option><option value="13">13本</option><option value="14">14本</option><option value="15">15本</option><option value="16">16本</option><option value="17">17本</option><option value="18">18本</option><option value="19">19本</option><option value="20">20本</option><option value="21">21本</option><option value="22">22本</option><option value="23">23本</option><option value="24">24本</option><option value="25">25本</option><option value="26">26本</option><option value="27">27本</option><option value="28">28本</option><option value="29">29本</option><option value="30">30本</option><option value="31">31本</option><option value="32">32本</option><option value="33">33本</option><option value="34">34本</option><option value="35">35本</option></select>
                 </div>
               </div>
             </div>
@@ -1197,7 +1216,7 @@
               <div class="sim-new-tag-body">
                 <span class="sim-new-tag-text" style="text-align: center;">5つ星習慣</span>
                 <div class="sim-new-qty-row">
-                  <select class="sim-new-qty-select" id="qty-star5" onchange="changeQty('star5', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
+                  <select class="sim-new-qty-select" id="qty-star5" onchange="changeQty('star5', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本</option><option value="1">1本</option><option value="2">2本</option><option value="3">3本</option><option value="4">4本</option><option value="5">5本</option><option value="6">6本</option><option value="7">7本</option><option value="8">8本</option><option value="9">9本</option><option value="10">10本</option><option value="11">11本</option><option value="12">12本</option><option value="13">13本</option><option value="14">14本</option><option value="15">15本</option><option value="16">16本</option><option value="17">17本</option><option value="18">18本</option><option value="19">19本</option><option value="20">20本</option><option value="21">21本</option><option value="22">22本</option><option value="23">23本</option><option value="24">24本</option><option value="25">25本</option><option value="26">26本</option><option value="27">27本</option><option value="28">28本</option><option value="29">29本</option><option value="30">30本</option><option value="31">31本</option><option value="32">32本</option><option value="33">33本</option><option value="34">34本</option><option value="35">35本</option></select>
                 </div>
               </div>
             </div>
@@ -1206,9 +1225,12 @@
               <div class="sim-new-tag-body">
                 <span class="sim-new-tag-text" style="text-align: center;">コレステ<br>さらり</span>
                 <div class="sim-new-qty-row">
-                  <select class="sim-new-qty-select" id="qty-choleste" onchange="changeQty('choleste', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本/週</option><option value="1">1本/週</option><option value="2">2本/週</option><option value="3">3本/週</option><option value="4">4本/週</option><option value="5">5本/週</option><option value="6">6本/週</option><option value="7">7本/週</option><option value="8">8本/週</option><option value="9">9本/週</option><option value="10">10本/週</option><option value="11">11本/週</option><option value="12">12本/週</option><option value="13">13本/週</option><option value="14">14本/週</option></select>
+                  <select class="sim-new-qty-select" id="qty-choleste" onchange="changeQty('choleste', this.value)" onclick="event.stopPropagation();"><option value="0" selected>0本</option><option value="1">1本</option><option value="2">2本</option><option value="3">3本</option><option value="4">4本</option><option value="5">5本</option><option value="6">6本</option><option value="7">7本</option><option value="8">8本</option><option value="9">9本</option><option value="10">10本</option><option value="11">11本</option><option value="12">12本</option><option value="13">13本</option><option value="14">14本</option><option value="15">15本</option><option value="16">16本</option><option value="17">17本</option><option value="18">18本</option><option value="19">19本</option><option value="20">20本</option><option value="21">21本</option><option value="22">22本</option><option value="23">23本</option><option value="24">24本</option><option value="25">25本</option><option value="26">26本</option><option value="27">27本</option><option value="28">28本</option><option value="29">29本</option><option value="30">30本</option><option value="31">31本</option><option value="32">32本</option><option value="33">33本</option><option value="34">34本</option><option value="35">35本</option></select>
                 </div>
               </div>
+            </div>
+            <div class="sim-new-reset-btn" onclick="resetAllProducts()">
+              <span style="font-size: 14px; font-weight: bold;">すべてリセット</span>
             </div>
           </div>
         </div>
@@ -1461,6 +1483,15 @@
       updateNewSimulator();
     }
 
+
+    function resetAllProducts() {
+      newProducts.forEach(p => {
+        p.qty = 0;
+        document.getElementById('qty-' + p.id).value = '0';
+        document.querySelector(`.sim-new-tag[data-id="${p.id}"]`).classList.remove('active');
+      });
+      updateNewSimulator();
+    }
     function updateNewSimulator() {
       const MONTHLY_FEE = 2980;
 
