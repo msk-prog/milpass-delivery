@@ -607,21 +607,20 @@
       color: #fff;
     }
     .sim-new-products-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 8px;
-      justify-content: center;
       padding-bottom: 4px;
     }
     .sim-new-tag {
-      height: 44px;
-      border-radius: 22px;
+      height: 48px;
+      border-radius: 24px;
       border: 1px solid var(--main-color);
       background: #fff;
       color: var(--main-color);
       display: flex;
       align-items: center;
-      padding: 6px 12px;
+      padding: 6px 8px;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -630,10 +629,10 @@
       color: #fff;
     }
     .sim-new-tag-img {
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height:  36px;
       object-fit: contain;
-      margin-right: 4px;
+      margin-right: 6px;
       border-radius: 50%;
       background: #fff;
     }
@@ -1450,7 +1449,7 @@
       }
 
       const MONTHLY_FEE = 2980;
-      const monthlyBottles = selectedPeople * selectedCount * 28;
+      const monthlyBottles = selectedCount * 28;
       const milpassMonthly = MONTHLY_FEE + (monthlyBottles * 100);
       
       let normalPriceAvg = 175;
@@ -1474,9 +1473,12 @@
         else if (perBottle < 150) compareText = "（スーパーのR-1（約150円）より安い）";
         else if (perBottle < 175) compareText = `（通常宅配（${normalPerBottle}円）より安い）`;
         
-        let formulaText = selectedCount === 1 
-          ? `${selectedPeople}人 × 1種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`
-          : `${selectedPeople}人 × ${selectedCount}種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`;
+        let formulaLines = prods.map(p => `<div>${p.name} × 週7本 × 4週 ＝ 月28本</div>`).join("");
+        let formulaText = `
+          ${formulaLines}
+          <div style="border-top: 1px dashed #ccc; margin: 4px 0;"></div>
+          <div style="font-weight: bold; margin-bottom: 8px;">合計 月${monthlyBottles}本</div>
+        `;
         
         resultCard.innerHTML = `
           <div style="font-size: 11px; color: #888; text-align: center; margin-bottom: 8px;">${formulaText}</div>
@@ -1493,9 +1495,12 @@
         `;
         resultCard.style.borderColor = "var(--main-color)";
       } else {
-        let formulaText = selectedCount === 1 
-          ? `${selectedPeople}人 × 1種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`
-          : `${selectedPeople}人 × ${selectedCount}種類 × 週7本 × 4週 ＝ 月${monthlyBottles}本`;
+        let formulaLines = prods.map(p => `<div>${p.name} × 週7本 × 4週 ＝ 月28本</div>`).join("");
+        let formulaText = `
+          ${formulaLines}
+          <div style="border-top: 1px dashed #ccc; margin: 4px 0;"></div>
+          <div style="font-weight: bold; margin-bottom: 8px;">合計 月${monthlyBottles}本</div>
+        `;
 
         resultCard.innerHTML = `
           <div style="font-size: 11px; color: #888; text-align: center; margin-bottom: 8px;">${formulaText}</div>
