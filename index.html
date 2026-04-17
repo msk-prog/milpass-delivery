@@ -613,8 +613,10 @@
       padding-bottom: 4px;
     }
     .sim-new-tag {
-      height: 48px;
-      border-radius: 24px;
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 56px;
+      border-radius: 8px;
       border: 1px solid var(--main-color);
       background: #fff;
       color: var(--main-color);
@@ -629,8 +631,9 @@
       color: #fff;
     }
     .sim-new-tag-img {
-      width: 36px;
-      height:  36px;
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
       object-fit: contain;
       margin-right: 6px;
       border-radius: 50%;
@@ -639,7 +642,8 @@
     .sim-new-tag-text {
       font-size: 13px;
       font-weight: bold;
-      white-space: nowrap;
+      white-space: normal;
+      line-height: 1.2;
     }
     .sim-new-prod-desc {
       font-size: 11px;
@@ -1423,9 +1427,7 @@
 
     function toggleProduct(id) {
       if (selectedProdIds.includes(id)) {
-        if (selectedProdIds.length > 1) {
-          selectedProdIds = selectedProdIds.filter(x => x !== id);
-        }
+        selectedProdIds = selectedProdIds.filter(x => x !== id);
       } else {
         selectedProdIds.push(id);
       }
@@ -1442,6 +1444,17 @@
       const selectedCount = prods.length;
       
       const descEl = document.getElementById('sim-new-desc-text');
+      const resultCard = document.getElementById('sim-new-result-content');
+      const cholesteNote = document.getElementById('choleste-note');
+      
+      if (selectedCount === 0) {
+        descEl.innerText = "商品を選んでください";
+        resultCard.innerHTML = `<div style="font-weight:bold; color:var(--accent-color); padding:20px 0;">商品を選んでください</div>`;
+        resultCard.style.borderColor = "#ccc";
+        cholesteNote.style.display = 'none';
+        return;
+      }
+      
       if (selectedCount === 1) {
         descEl.innerText = prods[0].desc;
       } else {
@@ -1449,76 +1462,46 @@
       }
 
       const MONTHLY_FEE = 2980;
-      const monthlyBottles = selectedCount * 28;
-      const milpassMonthly = MONTHLY_FEE + (monthlyBottles * 100);
+      const monthlyBottles = selectedPeople * 28;
       
-      let normalPriceAvg = 175;
-      if (selectedCount > 0) {
-        normalPriceAvg = prods.reduce((sum, p) => sum + p.normal, 0) / selectedCount;
-      }
-      const normalMonthly = monthlyBottles * normalPriceAvg;
+      const avgMilpass = prods.reduce((sum, p) => sum + p.price, 0) / selectedCount;
+      const avgNormal = prods.reduce((sum, p) => sum + p.normal, 0) / selectedCount;
+      
+      const milpassMonthly = MONTHLY_FEE + Math.round(monthlyBottles * avgMilpass);
+      const normalMonthly = Math.round(monthlyBottles * avgNormal);
       
       const hasCholeste = prods.some(p => p.id === 'choleste');
-      document.getElementById('choleste-note').style.display = hasCholeste ? 'block' : 'none';
+      if (hasCholeste) {
+        cholesteNote.style.display = 'block';
+        cholesteNote.innerText = "※コレステさらりは1本130円、他の商品は1本100円です";
+      } else {
+        cholesteNote.style.display = 'none';
+      }
       
-      const resultCard = document.getElementById('sim-new-result-content');
+      const diff = normalMonthly - milpassMonthly;
       
-      if (monthlyBottles >= 40) {
-        const diff = normalMonthly - milpassMonthly;
-        const perBottle = Math.round(milpassMonthly / monthlyBottles);
-        const normalPerBottle = Math.round(normalMonthly / monthlyBottles);
-        
-        let compareText = "";
-        if (perBottle < 120) compareText = "（自販機のお茶より安い）";
-        else if (perBottle < 150) compareText = "（スーパーのR-1（約150円）より安い）";
-        else if (perBottle < 175) compareText = `（通常宅配（${normalPerBottle}円）より安い）`;
-        
-        let formulaLines = prods.map(p => `<div>${p.name} × 週7本 × 4週 ＝ 月28本</div>`).join("");
-        let formulaText = `
-          ${formulaLines}
-          <div style="border-top: 1px dashed #ccc; margin: 4px 0;"></div>
-          <div style="font-weight: bold; margin-bottom: 8px;">合計 月${monthlyBottles}本</div>
-        `;
-        
-        resultCard.innerHTML = `
-          <div style="font-size: 11px; color: #888; text-align: center; margin-bottom: 8px;">${formulaText}</div>
+      let headerStr = `<div style="font-size: 13px; color: #555; font-weight: bold; text-align: center; margin-bottom: 12px;">${selectedPeople}人家族・月${monthlyBottles}本</div>`;
+      
+      let resultHTML = headerStr + `
           <div class="sim-new-res-row">
             <span class="sim-new-res-label">ミルパス</span>
             <span class="sim-new-res-val-main">月${milpassMonthly.toLocaleString()}円</span>
           </div>
-          <div class="sim-new-res-row">
+          <div class="sim-new-res-row" style="margin-bottom:8px;">
             <span class="sim-new-res-label" style="color:#999;font-weight:normal;">通常宅配</span>
             <span class="sim-new-res-val-sub">月${normalMonthly.toLocaleString()}円</span>
           </div>
-          <div class="sim-new-res-diff">💚 毎月${diff.toLocaleString()}円おトク</div>
-          <div class="sim-new-res-daily">1本あたり実質${perBottle}円 <br>${compareText}</div>
-        `;
+      `;
+      
+      if (diff > 0) {
+        resultHTML += `<div class="sim-new-res-diff" style="font-size:14px; padding:6px; margin-top:8px;">💚 毎月${diff.toLocaleString()}円おトク！</div>`;
         resultCard.style.borderColor = "var(--main-color)";
       } else {
-        let formulaLines = prods.map(p => `<div>${p.name} × 週7本 × 4週 ＝ 月28本</div>`).join("");
-        let formulaText = `
-          ${formulaLines}
-          <div style="border-top: 1px dashed #ccc; margin: 4px 0;"></div>
-          <div style="font-weight: bold; margin-bottom: 8px;">合計 月${monthlyBottles}本</div>
-        `;
-
-        resultCard.innerHTML = `
-          <div style="font-size: 11px; color: #888; text-align: center; margin-bottom: 8px;">${formulaText}</div>
-          <div class="sim-new-res-header" style="color:var(--accent-color); font-weight:bold;">今の選択では通常宅配がおトクです</div>
-          <div class="sim-new-res-row">
-            <span class="sim-new-res-label" style="color:#999;font-weight:normal;">ミルパス</span>
-            <span class="sim-new-res-val-sub">月${milpassMonthly.toLocaleString()}円</span>
-          </div>
-          <div class="sim-new-res-row">
-            <span class="sim-new-res-label">通常宅配</span>
-            <span class="sim-new-res-val-main" style="color:var(--main-color);font-size:16px;">月${normalMonthly.toLocaleString()}円</span>
-          </div>
-          <div class="sim-new-res-daily" style="color:#666; font-size:11px; margin-top:6px; line-height:1.4;">
-            💡 あと1種類追加するか、家族を1人増やすと<br>ミルパスが毎月おトクになります！
-          </div>
-        `;
+        resultHTML += `<div class="sim-new-res-diff" style="font-size:13px; padding:6px; margin-top:8px; background:#fce4e4; color:#c0392b;">通常宅配がおトクです</div>`;
         resultCard.style.borderColor = "#ccc";
       }
+      
+      resultCard.innerHTML = resultHTML;
     }
 
     // Initialize
